@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package mx.dreamcatchersoftware.DAO;
+import mx.dreamcatchersoftware.entidad.Carrera;
 import mx.dreamcatchersoftware.persistencia.AbstractDAO;
 /**
  *
  * @author libra
  */
-public class CarreraDAO extends AbstractDAO {
+public class CarreraDAO extends AbstractDAO<Integer, Carrera>{
 
 
 }
