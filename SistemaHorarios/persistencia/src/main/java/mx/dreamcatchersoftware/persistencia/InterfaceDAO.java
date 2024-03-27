@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.desarrollo.persistencia;
+package mx.dreamcatchersoftware.persistencia;
 
 import java.util.List;
 

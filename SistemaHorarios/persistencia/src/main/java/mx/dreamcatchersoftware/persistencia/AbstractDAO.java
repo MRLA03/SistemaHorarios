@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.desarrollo.persistencia;
+package mx.dreamcatchersoftware.persistencia;
 
 /**
  *
@@ -14,7 +14,7 @@ import java.lang.reflect.ParameterizedType;
 import java.math.BigInteger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
-import mx.desarrollo.persistencia.InterfaceDAO;
+import mx.dreamcatchersoftware.persistencia.InterfaceDAO;
 import java.util.List;
 //import mx.avanti.siract.dao.InterfaceDAO;
 import org.hibernate.SQLQuery;

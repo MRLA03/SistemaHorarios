@@ -1,4 +1,4 @@
-package mx.desarrollo.persistencia;
+package mx.dreamcatchersoftware.persistencia;
 
 import org.hibernate.HibernateException;
 import org.hibernate.ResourceClosedException;

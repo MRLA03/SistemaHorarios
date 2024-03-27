@@ -5,6 +5,8 @@
  */
 package mx.dreamcatchersoftware.integracion;
 
+import mx.dreamcatchersoftware.facade.FacadeCarrera;
+
 
 
 /**
@@ -12,25 +14,15 @@ package mx.dreamcatchersoftware.integracion;
  * @author EduardoCardona <>
  */
 public class ServiceFacadeLocator {
+   
+    private static FacadeCarrera facadeCarrera;
     
-    /*private static FacadeAlumno facadeAlumno;
-    private static FacadeUsuario facadeUsuario;
-    
-    public static FacadeAlumno getInstanceFacadeAlumno() {
-        if (facadeAlumno == null) {
-            facadeAlumno = new FacadeAlumno();
-            return facadeAlumno;
+    public static FacadeCarrera getInstanceFacadeCarrera() {
+        if (facadeCarrera == null) {
+            facadeCarrera = new FacadeCarrera();
+            return facadeCarrera;
         } else {
-            return facadeAlumno;
+            return facadeCarrera;
         }
-    }
-    
-    public static FacadeUsuario getInstanceFacadeUsuario() {
-        if (facadeUsuario == null) {
-            facadeUsuario = new FacadeUsuario();
-            return facadeUsuario;
-        } else {
-            return facadeUsuario;
-        }
-    }*/
+    }  
 }

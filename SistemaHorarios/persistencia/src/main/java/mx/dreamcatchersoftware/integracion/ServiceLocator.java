@@ -5,38 +5,17 @@
  */
 package mx.dreamcatchersoftware.integracion;
 
+import mx.dreamcatchersoftware.DAO.CarreraDAO;
 
-
-
-/**
- *
- * @author total
- */
 public class ServiceLocator {
-    /*
-    private static AlumnoDAO alumnoDAO;
-    private static UsuarioDAO usuarioDAO;*/
-    /**
-     * se crea la instancia para alumno DAO si esta no existe
-     */
-    /*public static AlumnoDAO getInstanceAlumnoDAO(){
-        if(alumnoDAO == null){
-            alumnoDAO = new AlumnoDAO();
-            return alumnoDAO;
+    private static CarreraDAO CarreraDAO;
+
+    public static CarreraDAO getInstanceCarreraDAO(){
+        if(CarreraDAO == null){
+            CarreraDAO = new CarreraDAO();
+            return CarreraDAO;
         } else{
-            return alumnoDAO;
+            return CarreraDAO;
         }
-    }*/
-    /**
-     * se crea la instancia de usuarioDAO si esta no existe
-     */
-    /*public static UsuarioDAO getInstanceUsuarioDAO(){
-        if(usuarioDAO == null){
-            usuarioDAO = new UsuarioDAO();
-            return usuarioDAO;
-        } else{
-            return usuarioDAO;
-        }
-    }*/
-    
+    }       
 }
