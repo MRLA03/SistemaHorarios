@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="mx.dreamcatchersoftware_entidad_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>mx.dreamcatchersoftware.entidad.Rela2</class>
+    <class>mx.dreamcatchersoftware.entidad.Sala</class>
+    <class>mx.dreamcatchersoftware.entidad.Asignatura</class>
+    <class>mx.dreamcatchersoftware.entidad.Dia</class>
+    <class>mx.dreamcatchersoftware.entidad.Subgrupo</class>
+    <class>mx.dreamcatchersoftware.entidad.Grupo</class>
+    <class>mx.dreamcatchersoftware.entidad.Rela4</class>
+    <class>mx.dreamcatchersoftware.entidad.Carrera</class>
+    <class>mx.dreamcatchersoftware.entidad.Rela1</class>
+    <class>mx.dreamcatchersoftware.entidad.Edificio</class>
+    <class>mx.dreamcatchersoftware.entidad.Maestro</class>
+    <class>mx.dreamcatchersoftware.entidad.Rela3</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bdshorarios?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="root"/>
+    </properties>
+  </persistence-unit>
+</persistence>
