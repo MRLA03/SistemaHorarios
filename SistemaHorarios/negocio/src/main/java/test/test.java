@@ -5,13 +5,17 @@
  */
 package test;
 
+import mx.dreamcatchersoftware.integracion.ServiceFacadeLocator;
+
 
 /**
  *
  * @author lukki
  */
 public class test {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) {        
+//REGISTRAR CARRERA       
+        int val = ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera("6", "Licenciado en Sistemas Computacionales", "2009-2", 130);
+        System.out.println("VAL: "+val);
     }
 }
