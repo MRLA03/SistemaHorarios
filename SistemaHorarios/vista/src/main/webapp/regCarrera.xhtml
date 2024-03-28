@@ -21,23 +21,23 @@
             <div class="registro">
                 <div class="panel-body">
                     <p:outputLabel value="Clave"/>
-                    <p:inputText class ="form-control" placeholder ="Clave" autocomplete="false" value ="" />
+                    <p:inputText class ="form-control" placeholder ="Clave" autocomplete="false" value ="#{carreraUI.carrera.claveCarrera}" />
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control" placeholder ="Nombre de la carrera" autocomplete="false" value ="" />
+                    <p:inputText class ="form-control" placeholder ="Nombre de la carrera" autocomplete="false" value ="#{carreraUI.carrera.nombreCarrera}" />
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Plan de estudios"/>
-                    <p:password class ="form-control" placeholder="Plan de estudios " value="" />
+                    <p:inputText class ="form-control" placeholder="Plan de estudios " value="#{carreraUI.carrera.plan}" />
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Banco de horas"/>
-                    <p:inputText class ="form-control" placeholder ="Banco de horas" autocomplete="false" value ="" />
+                    <p:inputText class ="form-control" placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" />
                 </div>
                 <div style="text-align: center;">
-                <p:commandButton update="messages" class = "btn btn-success" value ="Aceptar" actionListener ="#{usuarioUI.insertUsuario}" />
-                <p:commandButton update="messages" class = "btn btn-success" value ="Importar" actionListener ="#{usuarioUI.insertUsuario}" />
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Aceptar" actionListener ="#{carreraUI.registrarCarrera}" />
+                <p:commandButton update="messages" class = "btn btn-success" value ="Importar" />
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
                 </p:messages> 

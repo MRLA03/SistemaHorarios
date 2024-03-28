@@ -5,10 +5,24 @@
  */
 package mx.dreamcatchersoftware.helper;
 
-/**
- *
- * @author Usuario
- */
-public class CarreraHelper {
+import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import mx.dreamcatchersoftware.entidad.Carrera;
+import mx.dreamcatchersoftware.integracion.ServiceFacadeLocator;
+
+public class CarreraHelper implements Serializable{
+    public int registrarCarrera(String clave_carrera, String nombre_carrera, String plan, int bancoh){
+        try{
+            if(ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera(clave_carrera, nombre_carrera, plan,bancoh) !=0){
+                return ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera(clave_carrera, nombre_carrera, plan,bancoh);                 
+            }else{
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Clave ya existente",""));                   
+            }
+        }catch(Exception e){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos",""));   
+        }
+        return ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera(clave_carrera, nombre_carrera, plan,bancoh);         
+    }
     
 }
