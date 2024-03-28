@@ -29,6 +29,8 @@ public class DelegateCarrera {
                 car.setBancoHoras(bancoh);
                 ServiceLocator.getInstanceCarreraDAO().save(car);
                 val=1;// Todo correcto
+            }else{
+                val=2;
             }            
         }catch(Exception e){
             System.out.println("\n Error al registrar Carrera: "+e);
