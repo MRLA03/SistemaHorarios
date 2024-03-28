@@ -18,7 +18,7 @@ public class DelegateCarrera {
     public int registrarCarrera(String clave_carrera, String nombre_carrera, String plan, int bancoh){
         int val=0;// 0 Si no cumple las validaciones
         List<Carrera> carreras = new ArrayList<>();
-        Carrera car = new Carrera();
+        Carrera car = new Carrera();        
         try{
             carreras = ServiceLocator.getInstanceCarreraDAO().executeQuery("SELECT * FROM carrera WHERE claveCarrera = '"+clave_carrera+"';");            
             if(carreras.isEmpty()){
@@ -37,5 +37,35 @@ public class DelegateCarrera {
             val=0;
         }
         return val;
+    }
+    
+    public List consultarCarrera(){
+        List<Carrera> carreras = new ArrayList<>();
+        try{
+            carreras = ServiceLocator.getInstanceCarreraDAO().executeQuery("SELECT * FROM carrera ORDER BY nombreCarrera;");
+        }catch(Exception e){
+            System.out.println("\n Error al consultar Carreras: "+e);
+        }
+        return carreras;
+    }
+    
+    public List consultarCarreraNombre(String busquedaNombre){
+        List<Carrera> carreras = new ArrayList<>();
+        try{
+            carreras = ServiceLocator.getInstanceCarreraDAO().executeQuery("SELECT * FROM carrera WHERE nombreCarrera LIKE '%"+busquedaNombre+"%' ORDER BY nombreCarrera;");
+        }catch(Exception e){
+            System.out.println("\n Error al consultar Carreras: "+e);
+        }
+        return carreras;
+    }
+    
+    public List consultarCarreraClave(String busquedaClave){
+        List<Carrera> carreras = new ArrayList<>();        
+        try{
+            carreras = ServiceLocator.getInstanceCarreraDAO().executeQuery("SELECT * FROM carrera WHERE claveCarrera LIKE '%"+busquedaClave+"%' ORDER BY claveCarrera;");
+        }catch(Exception e){
+            System.out.println("\n Error al consultar Carreras: "+e);
+        }
+        return carreras;
     }
 }
