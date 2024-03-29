@@ -68,7 +68,7 @@ public class DelegateCarrera {
         return carreras;
     }
     
-    public List consultarCarreraClaveNombre(String busqueda){
+    public List consultarCarreraNombreClave(String busqueda){
         List<Carrera> carreras = new ArrayList<>();
         try{
             carreras = ServiceLocator.getInstanceCarreraDAO().executeQuery("SELECT * FROM carrera WHERE LOWER(nombreCarrera) LIKE LOWER('%"+busqueda+"%') OR claveCarrera LIKE '%"+busqueda+"%' ORDER BY nombreCarrera;");

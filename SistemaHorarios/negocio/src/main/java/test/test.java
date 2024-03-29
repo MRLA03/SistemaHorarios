@@ -48,7 +48,7 @@ public class test {
             System.out.println("La lista de subunidades de aprendizaje es nula.");
         }*/
 // CONSULTAR CARRERAS POR CLAVE O NOMBRE YA SEA PARCIAL O COMPLETA
-        List<Carrera> carreras = ServiceFacadeLocator.getInstanceFacadeCarrera().consultarCarreraClaveNombre("C1");
+        List<Carrera> carreras = ServiceFacadeLocator.getInstanceFacadeCarrera().consultarCarreraNombreClave("C1");
         System.out.println("VAL: "+carreras.get(0).getBancoHoras());
         if (carreras != null) {
         carreras.forEach((car) -> {
