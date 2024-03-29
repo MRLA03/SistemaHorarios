@@ -39,4 +39,7 @@ public class FacadeCarrera {
     public List consultarCarreraClave(String busquedaClave){
         return delegateCarrera.consultarCarreraClave(busquedaClave);
     }   
+    public int modificarCarrera(String clave_carrera, String nombre_carrera, String plan, int bancoh) {
+        return delegateCarrera.modificarCarrera(clave_carrera, nombre_carrera, plan, bancoh);
+    }
 }
