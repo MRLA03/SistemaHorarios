@@ -15,13 +15,16 @@ import java.util.List;
 public class test {
     public static void main(String[] args) {        
         // Registrar Carrera       
-        int val = ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera("103","Algorit", "2002-2", 100);
+        /*int val = ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera("103","Algorit", "2002-2", 100);
         System.out.println("VAL: " + val);
-    System.out.println();
+        System.out.println();*/
        
-    
+        // Registrar Asignatura
+        /*int val = ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera("si", "si", "si", 200);
+        System.out.println(val);*/
+        
    // Modificar Carrera
-        int val2 = ServiceFacadeLocator.getInstanceFacadeCarrera().modificarCarrera("101", "matematicas", "200222222-2", 100000);
+        /*int val2 = ServiceFacadeLocator.getInstanceFacadeCarrera().modificarCarrera("101", "matematicas", "200222222-2", 100000);
         
         // Verificar si la modificación fue exitosa
         if (val2 == 1) {
@@ -42,7 +45,7 @@ public class test {
             }
         } else {
             System.out.println("La modificación de la carrera no se pudo completar.");
-        }
+        }*/
     
     
     
