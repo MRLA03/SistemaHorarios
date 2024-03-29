@@ -15,9 +15,9 @@ import java.util.List;
 public class test {
     public static void main(String[] args) {        
         // Registrar Carrera       
-        int val = ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera("103","Algorit", "2002-2", 100);
+        /*int val = ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera("103","Algorit", "2002-2", 100);
         System.out.println("VAL: " + val);
-    System.out.println();
+        System.out.println();*/
        
     
     
