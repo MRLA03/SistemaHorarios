@@ -35,4 +35,8 @@ public class FacadeCarrera {
     public List consultarCarreraClave(String busquedaClave){
         return delegateCarrera.consultarCarreraClave(busquedaClave);
     }
+    
+    public List consultarCarreraClaveNombre(String busqueda){
+        return delegateCarrera.consultarCarreraClaveNombre(busqueda);
+    }
 }

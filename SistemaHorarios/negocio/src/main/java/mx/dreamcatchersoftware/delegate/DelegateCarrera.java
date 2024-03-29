@@ -68,4 +68,14 @@ public class DelegateCarrera {
         }
         return carreras;
     }
+    
+    public List consultarCarreraClaveNombre(String busqueda){
+        List<Carrera> carreras = new ArrayList<>();
+        try{
+            carreras = ServiceLocator.getInstanceCarreraDAO().executeQuery("SELECT * FROM carrera WHERE LOWER(nombreCarrera) LIKE LOWER('%"+busqueda+"%') OR claveCarrera LIKE '%"+busqueda+"%' ORDER BY nombreCarrera;");
+        }catch(Exception e){
+            System.out.println("\n Error al consultar Carreras: "+e);
+        }
+        return carreras;
+    }
 }
