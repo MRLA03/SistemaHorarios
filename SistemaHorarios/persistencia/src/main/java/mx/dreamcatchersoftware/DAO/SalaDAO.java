@@ -5,13 +5,13 @@
  */
 package mx.dreamcatchersoftware.DAO;
 
-import mx.dreamcatchersoftware.entidad.Carrera;
+import mx.dreamcatchersoftware.entidad.Sala;
 import mx.dreamcatchersoftware.persistencia.AbstractDAO;
+
 /**
  *
- * @author libra
+ * @author acer
  */
-public class CarreraDAO extends AbstractDAO<Integer, Carrera>{
-
-
+public class SalaDAO extends AbstractDAO<Integer, Sala>{
+    
 }

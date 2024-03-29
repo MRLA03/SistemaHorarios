@@ -8,16 +8,17 @@
       xmlns:o="http://omnifaces.org/ui"
       xmlns:of="http://omnifaces.org/functions"          
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:pm="http://primefaces.org/mobile">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"><!--xmlns:pm="http://primefaces.org/mobile"-->
     <h:head>
         <link rel="preconnect" href="https://rsms.me/"/>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>  
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="https://kit.fontawesome.com/c88c3ca108.js" crossorigin="anonymous"></script><!--FontAwesome-->
         <title>INICIO</title> 
     </h:head>
     <h:body>
-        <h:form>
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true"/>
             <div style="text-align: center; margin: 5px">
                 <p:inputText class ="form-control" placeholder="Busqueda por nombre o clave" id="searchInput" value="#{carreraUI.palabraBuscada}">
                 <p:ajax event="keyup" update="searchResults" listener="#{carreraUI.busquedaDinamica()}" />
@@ -25,18 +26,18 @@
             </div>
             <!--PAGINACION DE TABLA-->
             <!--<p:dataTable paginator="true" rows="10" rowsPerPageTemplate="5,10,15" id="searchResults" var="carre" value="" class="custom-table" emptyMessage="No se encontraron registros"> -->
-            <p:dataTable id="searchResults" var="carre" value="#{carreraUI.resultados}" class="custom-table" emptyMessage="No se encontraron registros">
+            <p:dataTable id="searchResults" var="carre" value="#{carreraUI.resultados}" class="custom-table" emptyMessage="No se encontraron registros">                
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="Clave"/>
                     </f:facet>
-                    <h:outputText value="#{carre.getClaveCarrera()}"/>
+                    <h:outputText id="clave" value="#{carre.getClaveCarrera()}"/>
                 </p:column>
-                <p:column>
+                <p:column>                    
                     <f:facet name="header">
                         <h:outputText value="Nombre"/>
                     </f:facet>
-                    <h:outputText value="#{carre.getNombreCarrera()}"/>
+                    <h:outputText value="#{carre.getNombreCarrera()}"/>                   
                 </p:column>
                 <p:column>
                     <f:facet name="header">
@@ -49,16 +50,50 @@
                         <h:outputText value="Banco de horas"/>
                     </f:facet>
                     <h:outputText value="#{carre.getBancoHoras()}"/>                    
-                </p:column>
+                </p:column>                 
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value=""/>
-                    </f:facet>                  
-                </p:column>                
+                    </f:facet>                
+                    <p:commandButton action="#{carreraUI.setCarrera(carre.getClaveCarrera())}" styleClass="btn btn-primary" onclick="PF('dialogo').show();">
+                        <i class="fas fa-pen-to-square" style="color: #808080;"></i>
+                    </p:commandButton>
+                </p:column>
+
             </p:dataTable>
         </h:form>
+        <p:dialog header="Modificar" widgetVar="dialogo" resizable="false">
+            <!-- Contenido de la ventana emergente aquí -->
+            <h:outputText value="Contenido de la ventana emergente..." />                        
+            <h:outputText value="HOLA#{carreraUI.getClaveCarreraSeleccionada()}" />   
+        </p:dialog>
     </h:body>
-    <style>
-
-    </style>
+    <!--<style>
+        /* Estilo para el header de la tabla */
+        .custom-table th {
+            background-color: transparent !important; /* Header transparente */
+            color: black; /* Texto negro */
+            border-left: transparent !important;            
+            border-right:  transparent !important;            
+            border-top: transparent !important;            
+            border-bottom: 1px solid green; /* Borde verde */
+        }
+        /* Estilo para la última celda de la tabla */
+        .custom-table tr{
+            /*border-right: transparent !important;*/
+            border-left:  transparent !important; 
+        }        
+        /* Estilo para las líneas horizontales de la tabla */
+        .custom-table tr{
+            border-bottom: 1px solid gray; /* Líneas horizontales grises */
+            background-color: transparent !important;
+            border-right:  1px solid green;
+        }             
+       
+        /* Estilo para la primera celda de la tabla */
+        .custom-table tr:last-child {
+            border-bottom:  transparent !important; 
+            border-right:   transparent !important; 
+        }        
+    </style>-->
 </html>

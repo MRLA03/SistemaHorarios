@@ -27,6 +27,7 @@ public class CarreraUI {
     private Carrera carrera;
     private String palabraBuscada;
     private List<Carrera> resultados;
+    private String claveCarreraSeleccionada;
     
     public CarreraUI(){
         carreraHelper = new CarreraHelper();
@@ -37,6 +38,7 @@ public class CarreraUI {
         carrera= new Carrera();
         resultados = new ArrayList<>();
         resultados=consultarCarrera();
+        claveCarreraSeleccionada = "";
     }
 
     public void registrarCarrera() throws IOException{
@@ -91,9 +93,15 @@ public class CarreraUI {
 
     public void setResultados(List<Carrera> resultados) {
         this.resultados = resultados;
+    }    
+
+    public String getClaveCarreraSeleccionada() {
+        return claveCarreraSeleccionada;
     }
-    
-    
+
+    public void setClaveCarreraSeleccionada(String claveCarreraSeleccionada) {
+        this.claveCarreraSeleccionada = claveCarreraSeleccionada;
+    }
     
     
 }
