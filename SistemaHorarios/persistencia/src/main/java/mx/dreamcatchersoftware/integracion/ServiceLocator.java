@@ -5,8 +5,12 @@
  */
 package mx.dreamcatchersoftware.integracion;
 
+
 import mx.dreamcatchersoftware.DAO.CarreraDAO;
 import mx.dreamcatchersoftware.DAO.SalaDAO;
+import mx.dreamcatchersoftware.DAO.AsignaturaDAO;
+import mx.dreamcatchersoftware.DAO.EdificioDAO;
+
 
 public class ServiceLocator {
     private static CarreraDAO CarreraDAO;
