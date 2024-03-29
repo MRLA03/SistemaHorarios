@@ -8,17 +8,71 @@
       xmlns:o="http://omnifaces.org/ui"
       xmlns:of="http://omnifaces.org/functions"          
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pm="http://primefaces.org/mobile">
     <h:head>
+        <link rel="preconnect" href="https://rsms.me/"/>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>  
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <title>INICIO</title>
+        <title>INICIO DEL SISTEMA</title>        
     </h:head>
     <h:body>
-        
+    <ui:include src="encabezado.xhtml"/>         
+    <p:layout style="width: 100%; height: 82.4vh;">
+        <p:layoutUnit position="west" size="5%" style="width: 100%; background-color: #009757; border:none; border-radius: 0;" class="myLayoutStyleClass">
+            <h:form style="width: 95%;">
+                <p:commandButton value="Botón 1" action="#{bean.metodo}" style="width: 100%; font-size: 10px;" />
+                <p:commandButton value="Botón 2" action="#{bean.otroMetodo}" style="width: 100%; font-size: 10px;" />
+            </h:form>
+        </p:layoutUnit>
+        <p:layoutUnit position="center" style="width: 100%; border:none;">            
+            <h:form class="formulario">
+               <h:outputText id="texto" value="Carrera" class="pestana"/> 
+               <p:menubar class="custom-menubar">
+                   <p:menuitem value="Registrar" onclick="cambiarSrc('regCarrera.xhtml');"/>
+                   <p:menuitem value="Consultar" onclick="cambiarSrc('conCarrera.xhtml');"/>
+                   <p:menuitem value="Modificar"/>
+               </p:menubar>
+               <iframe id="miFrame" class="embed-responsive-item" style="border: 0px; width: 50%; height: 80vh;" src="regCarrera.xhtml"></iframe>               
+            </h:form>
+        </p:layoutUnit>
+    </p:layout>   
     </h:body>
     <style>
-        body{
-            background-color: whitesmoke;
-        }
+            .formulario{
+                text-align: center;
+                max-width: 100%;
+            }
+            .myLayoutStyleClass .ui-layout-unit-content{
+               background: #009757;
+            }
+            .pestana{
+                font-family: Inter, sans-serif;
+                font-feature-settings: 'liga' 1, 'calt' 1;
+                color: black; 
+                font-size: 40px; 
+                font-weight: bold;                
+            }
+            .custom-menubar{
+                background-color: transparent;
+                border:none;
+                border-radius: 0;
+                border-bottom: 1px solid #009757;
+                margin: 40px;
+            }
+            .custom-menubar .ui-menuitem{
+                background-color: transparent;
+                border: none;
+                margin-left: 20px;
+            }        
+            .custom-menubar .ui-menuitem .ui-menuitem-link:hover{
+                background-color: transparent;
+                border: 1px solid #009757;
+            }
     </style>
+    <script>       
+        function cambiarSrc(src) {
+            document.getElementById("miFrame").src = src;
+        }   
+    </script>    
 </html>

@@ -22,7 +22,6 @@ public class DelegateCarrera {
         try{
             carreras = ServiceLocator.getInstanceCarreraDAO().executeQuery("SELECT * FROM carrera WHERE claveCarrera = '"+clave_carrera+"';");            
             if(carreras.isEmpty()){
-                car.setIdCarrera(12);
                 car.setClaveCarrera(clave_carrera);                
                 car.setNombreCarrera(nombre_carrera);                
                 car.setPlan(plan);                

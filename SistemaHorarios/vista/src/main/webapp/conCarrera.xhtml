@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"          
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions"          
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pm="http://primefaces.org/mobile">
+    <h:head>
+        <link rel="preconnect" href="https://rsms.me/"/>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>  
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <title>INICIO</title> 
+    </h:head>
+    <h:body>
+        <h:form>
+            <div style="text-align: center; margin: 5px">
+                <p:inputText class ="form-control" placeholder="Busqueda por nombre o clave" id="searchInput" value="#{carreraUI.palabraBuscada}">
+                <p:ajax event="keyup" update="searchResults" listener="#{carreraUI.busquedaDinamica()}" />
+            </p:inputText>
+            </div>
+            <!--PAGINACION DE TABLA-->
+            <!--<p:dataTable paginator="true" rows="10" rowsPerPageTemplate="5,10,15" id="searchResults" var="carre" value="" class="custom-table" emptyMessage="No se encontraron registros"> -->
+            <p:dataTable id="searchResults" var="carre" value="#{carreraUI.resultados}" class="custom-table" emptyMessage="No se encontraron registros">
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Clave"/>
+                    </f:facet>
+                    <h:outputText value="#{carre.getClaveCarrera()}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"/>
+                    </f:facet>
+                    <h:outputText value="#{carre.getNombreCarrera()}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Plan"/>
+                    </f:facet>
+                    <h:outputText value="#{carre.getPlan()}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Banco de horas"/>
+                    </f:facet>
+                    <h:outputText value="#{carre.getBancoHoras()}"/>                    
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value=""/>
+                    </f:facet>                  
+                </p:column>                
+            </p:dataTable>
+        </h:form>
+    </h:body>
+    <style>
+
+    </style>
+</html>
