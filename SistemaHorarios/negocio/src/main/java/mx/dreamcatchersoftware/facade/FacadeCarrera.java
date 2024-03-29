@@ -5,6 +5,7 @@
  */
 package mx.dreamcatchersoftware.facade;
 
+import java.util.List;
 import mx.dreamcatchersoftware.delegate.DelegateCarrera;
 
 /**
@@ -21,5 +22,13 @@ public class FacadeCarrera {
     
     public int registrarCarrera(String clave_carrera, String nombre_carrera, String plan, int bancoh){
         return delegateCarrera.registrarCarrera(clave_carrera, nombre_carrera, plan, bancoh);
+    }
+
+    public List consultarCarrera(){
+        return delegateCarrera.consultarCarrera();
+    }
+
+    public List consultarCarreraNombreClave(String busqueda){
+        return delegateCarrera.consultarCarreraNombreClave(busqueda);
     }    
 }

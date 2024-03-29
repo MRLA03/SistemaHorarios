@@ -35,4 +35,24 @@ public class DelegateCarrera {
         }
         return val;
     }
+    
+    public List consultarCarrera(){
+        List<Carrera> carreras = new ArrayList<>();
+        try{
+            carreras = ServiceLocator.getInstanceCarreraDAO().executeQuery("SELECT * FROM carrera ORDER BY nombreCarrera;");
+        }catch(Exception e){
+            System.out.println("\n Error al consultar Carreras: "+e);
+        }
+        return carreras;
+    }
+
+    public List consultarCarreraNombreClave(String busqueda){
+        List<Carrera> carreras = new ArrayList<>();
+        try{
+            carreras = ServiceLocator.getInstanceCarreraDAO().executeQuery("SELECT * FROM carrera WHERE nombreCarrera LIKE '%"+busqueda+"%' OR claveCarrera LIKE '%"+busqueda+"%' ORDER BY nombreCarrera;");
+        }catch(Exception e){
+            System.out.println("\n Error al consultar Carreras: "+e);
+        }
+        return carreras;
+    }    
 }

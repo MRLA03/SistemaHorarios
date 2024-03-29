@@ -6,6 +6,7 @@
 package mx.dreamcatchersoftware.helper;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import mx.dreamcatchersoftware.entidad.Carrera;
@@ -24,5 +25,13 @@ public class CarreraHelper implements Serializable{
         }
         return ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera(clave_carrera, nombre_carrera, plan,bancoh);         
     }
+    
+    public List consultarCarrera(){
+        return ServiceFacadeLocator.getInstanceFacadeCarrera().consultarCarrera();
+    }
+    
+    public List consultarCarreraNombreClave(String busqueda){
+        return ServiceFacadeLocator.getInstanceFacadeCarrera().consultarCarreraNombreClave(busqueda);
+    }       
     
 }
