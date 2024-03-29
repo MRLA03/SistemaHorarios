@@ -20,14 +20,20 @@ public class test {
     System.out.println();
        
     
-   // Modificar Carrera
+    
+    
+    
+    
+    
+    
+          // Modificar
         int val2 = ServiceFacadeLocator.getInstanceFacadeCarrera().modificarCarrera("101", "matematicas", "200222222-2", 100000);
-        
-        // Verificar si la modificación fue exitosa
+
+        // Verificar
         if (val2 == 1) {
             // Consultar la carrera modificada
             List<Carrera> carrerasModificadas = ServiceFacadeLocator.getInstanceFacadeCarrera().consultarCarreraNombreClave("101");
-            
+
             // Imprimir los detalles de las carreras modificadas (si las hay)
             if (!carrerasModificadas.isEmpty()) {
                 for (Carrera carrera : carrerasModificadas) {
@@ -43,7 +49,7 @@ public class test {
         } else {
             System.out.println("La modificación de la carrera no se pudo completar.");
         }
-    
+
     
     
     }
