@@ -53,7 +53,13 @@
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value=""/>
-                    </f:facet>                  
+                    </f:facet>
+                    <p:commandButton value="M" action="modCarrera.xhtml">
+                        <f:param name="paramName" value="#{carre.getClaveCarrera()}"/>
+                    </p:commandButton>
+                    <p:commandButton value="E" action="modCarrera.xhtml">
+                        
+                    </p:commandButton>                    
                 </p:column>                
             </p:dataTable>
         </h:form>
