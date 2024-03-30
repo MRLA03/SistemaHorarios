@@ -20,6 +20,7 @@ public class FacadeCarrera {
         this.delegateCarrera = new DelegateCarrera();
     }
     
+    
     public int registrarCarrera(String clave_carrera, String nombre_carrera, String plan, int bancoh){
         return delegateCarrera.registrarCarrera(clave_carrera, nombre_carrera, plan, bancoh);
     }
@@ -43,5 +44,4 @@ public class FacadeCarrera {
     public int modificarCarrera(String clave_carrera, String nombre_carrera, String plan, int bancoh) {
         return delegateCarrera.modificarCarrera(clave_carrera, nombre_carrera, plan, bancoh);
     }
-
 }
