@@ -14,7 +14,9 @@ import mx.dreamcatchersoftware.DAO.EdificioDAO;
 
 public class ServiceLocator {
     private static CarreraDAO CarreraDAO;
-    private static SalaDAO SalaDAO;
+    private static SalaDAO SalaDAO;    
+    private static AsignaturaDAO AsignaturaDAO;
+    private static EdificioDAO EdificioDAO;
     
     public static CarreraDAO getInstanceCarreraDAO(){
         if(CarreraDAO == null){
@@ -25,6 +27,24 @@ public class ServiceLocator {
         }
     }
     
+    public static AsignaturaDAO getInstanceAsignaturaDAO(){
+        if(AsignaturaDAO == null){
+            AsignaturaDAO = new AsignaturaDAO();
+            return AsignaturaDAO;
+        } else{
+            return AsignaturaDAO;
+        }
+    }
+    
+    public static EdificioDAO getInstanceEdificioDAO(){
+        if(EdificioDAO == null){
+            EdificioDAO = new EdificioDAO();
+            return EdificioDAO;
+        } else{
+            return EdificioDAO;
+        }
+    } 
+    
     public static SalaDAO getInstanceSalaDAO(){
         if(SalaDAO == null){
             SalaDAO = new SalaDAO();
@@ -33,4 +53,5 @@ public class ServiceLocator {
             return SalaDAO;
         }
     } 
+    
 }

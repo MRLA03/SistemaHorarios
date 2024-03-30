@@ -17,4 +17,14 @@ import mx.dreamcatchersoftware.integracion.ServiceLocator;
  */
 public class DelegateEdificio {
 
+    
+    public List consultarEdificio() {
+        List<Edificio> edificios = new ArrayList<>();
+        try {
+            edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio ORDER BY nombreEdificio;");
+        } catch (Exception e) {
+            System.out.println("\n Error al consultar Carreras: " + e);
+        }
+        return edificios;
+    }
 }

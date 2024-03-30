@@ -58,7 +58,7 @@ public class test {
             System.out.println("La lista de subunidades de aprendizaje es nula.");
         }
 // MODIFICAR
-        int val2 = ServiceFacadeLocator.getInstanceFacadeCarrera().modificarCarrera("101", "matematicas", "200222222-2", 100000);
+     /*   int val2 = ServiceFacadeLocator.getInstanceFacadeCarrera().modificarCarrera("101", "matematicas", "200222222-2", 100000);
     // VERIFICAR
         if (val2 == 1) {
             // Consultar la carrera modificada
@@ -78,7 +78,7 @@ public class test {
             }
         } else {
             System.out.println("La modificación de la carrera no se pudo completar.");
-        }
+        }*/
 
     
     
