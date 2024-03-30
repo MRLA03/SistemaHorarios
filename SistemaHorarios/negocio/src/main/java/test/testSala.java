@@ -29,16 +29,16 @@ public class testSala {
             System.out.println("La lista de subunidades de aprendizaje es nula.");
         }*/
 // CONSULTAR SALA POR ID O POR NOMBRE DE SALA YA SEA PARCIAL O COMPLETA
-        List<Sala> salas = ServiceFacadeLocator.getInstanceFacadeSala().consultarSalaIdNombre("A");
+        /*List<Sala> salas = ServiceFacadeLocator.getInstanceFacadeSala().consultarSalaIdNombre("A");
         if (salas !=null) {
             salas.forEach((sal) -> {
                 System.out.println(sal.getIdEdificio().getNombreEdificio()+" : "+sal.getNombreSala()+ "\n");
             });
         } else {
             System.out.println("La lista de subunidades de aprendizaje es nula.");
-        }
+        }*/
 //  FILTRAR SALAS POR EDIFICIO
-        System.out.println("\nSALAS FILTRADO POR EDIFICIO");
+        /*System.out.println("\nSALAS FILTRADO POR EDIFICIO");
         salas = ServiceFacadeLocator.getInstanceFacadeSala().filtrarSalaEdificio(salas, 1);
         if (salas !=null) {
             salas.forEach((sal) -> {
@@ -46,6 +46,9 @@ public class testSala {
             });
         } else {
             System.out.println("La lista de subunidades de aprendizaje es nula.");
-        }
+        }*/
+// MODIFICAR
+        int val = ServiceFacadeLocator.getInstanceFacadeSala().modificarCarrera(3, "AudioVisual - B", 50, 1, "Proyector, sillas tipo auditorio");
+        System.out.println("VAL: "+val);
     }
 }

@@ -106,4 +106,34 @@ public class DelegateSala {
         
         return salasFiltradas;
     }
+    
+    public int modificarSala(int id_sala,String nombre_sala, int capacidad, int id_edificio, String nota) {
+        int val = 0; // 0 si no cumple las validaciones copiado del luis        
+        List<Sala> salas = new ArrayList<>();
+        Sala sal = new Sala();        
+        List<Edificio> edificios = new ArrayList<>();
+        try{
+            salas = ServiceLocator.getInstanceSalaDAO().executeQuery("SELECT * FROM sala WHERE idSala = "+id_sala+";");
+            if(!salas.isEmpty()){//Validar que exista la sala
+                edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio WHERE idEdificio = "+id_edificio+";");
+                if(!edificios.isEmpty()){
+                    sal.setIdSala(id_sala);
+                    sal.setNombreSala(nombre_sala);
+                    sal.setCapacidad(capacidad);
+                    sal.setIdEdificio(edificios.get(0));
+                    sal.setNota(nota);
+                    ServiceLocator.getInstanceSalaDAO().update(sal);
+                    val=1;// Todo bien
+                }else{
+                    val = 3;// Existe la Sala, pero el Edificio que ingreso tampoco existe
+                }
+            }else{
+                val=2;// No existe esa Sala
+            }
+        }catch(Exception e){
+            System.out.println("\n Error al modificar Sala: "+e);
+            val=0;// Hay una Excepcion
+        }
+        return val;
+    }
 }

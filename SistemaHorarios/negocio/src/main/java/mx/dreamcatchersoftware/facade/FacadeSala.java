@@ -35,4 +35,8 @@ public class FacadeSala {
     public List filtrarSalaEdificio(List<Sala> salas, int id_Edificio){
         return delegateSala.filtrarSalaEdificio(salas, id_Edificio);
     }
+    
+    public int modificarCarrera(int id_sala,String nombre_sala, int capacidad, int id_edificio, String nota) {
+        return delegateSala.modificarSala(id_sala, nombre_sala, capacidad, id_edificio, nota);
+    }
 }
