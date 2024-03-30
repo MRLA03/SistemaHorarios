@@ -34,6 +34,7 @@ public class DelegateCarrera {
             System.out.println("\n Error al registrar Carrera: " + e);
             val = 0;
         }
+        
         return val;
     }
 

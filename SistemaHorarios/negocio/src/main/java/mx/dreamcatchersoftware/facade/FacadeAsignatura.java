@@ -21,4 +21,7 @@ public class FacadeAsignatura {
     public int registrarAsignatura(String clave_asignatura, String nombre_asignatura, int horas_clase, int horas_taller, int horas_practicas,  int horas_laboratorio){
         return delegateAsignatura.registrarAsignatura(clave_asignatura, nombre_asignatura, horas_clase, horas_taller, horas_practicas, horas_laboratorio);
     }    
+    
+    
+    
 }

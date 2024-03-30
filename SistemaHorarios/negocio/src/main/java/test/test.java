@@ -8,25 +8,20 @@ package test;
 import mx.dreamcatchersoftware.integracion.ServiceFacadeLocator;
 import mx.dreamcatchersoftware.entidad.Carrera;
 import java.util.List;
-
+import mx.dreamcatchersoftware.entidad.Edificio;
 /**
  * Clase de prueba para probar el registro y modificación de carreras.
  */
 public class test {
     public static void main(String[] args) {        
-        // Registrar Carrera       
-        /*int val = ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera("103","Algorit", "2002-2", 100);
+       // Registrar Carrera       
+       /* int val = ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera("103","Algorit", "2002-2", 100);
         System.out.println("VAL: " + val);
-        System.out.println();*/
-       
+        System.out.println();
+       */
     
     
-    
-    
-    
-    
-    
-          // Modificar
+          /* Modificar
         int val2 = ServiceFacadeLocator.getInstanceFacadeCarrera().modificarCarrera("101", "matematicas", "200222222-2", 100000);
 
         // Verificar
@@ -51,7 +46,7 @@ public class test {
         }
 
     
-    
+    */
     }
 }
 

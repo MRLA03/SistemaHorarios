@@ -5,43 +5,41 @@
  */
 package mx.dreamcatchersoftware.integracion;
 
-
 import mx.dreamcatchersoftware.DAO.CarreraDAO;
 import mx.dreamcatchersoftware.DAO.AsignaturaDAO;
 import mx.dreamcatchersoftware.DAO.EdificioDAO;
 
-
 public class ServiceLocator {
+
     private static CarreraDAO CarreraDAO;
     private static AsignaturaDAO AsignaturaDAO;
     private static EdificioDAO EdificioDAO;
-    
-    public static CarreraDAO getInstanceCarreraDAO(){
-        if(CarreraDAO == null){
+
+    public static CarreraDAO getInstanceCarreraDAO() {
+        if (CarreraDAO == null) {
             CarreraDAO = new CarreraDAO();
             return CarreraDAO;
-        } else{
+        } else {
             return CarreraDAO;
         }
-    }  
-    
-    public static AsignaturaDAO getInstanceAsignaturaDAO(){
-        if(AsignaturaDAO == null){
+    }
+
+    public static AsignaturaDAO getInstanceAsignaturaDAO() {
+        if (AsignaturaDAO == null) {
             AsignaturaDAO = new AsignaturaDAO();
             return AsignaturaDAO;
-        } else{
+        } else {
             return AsignaturaDAO;
-        }   
-    }  
-    
-    public static EdificioDAO getInstanceEdificioDAO(){
-        if(EdificioDAO == null){
+        }
+    }
+
+    public static EdificioDAO getInstanceEdificioDAO() {
+        if (EdificioDAO == null) {
             EdificioDAO = new EdificioDAO();
             return EdificioDAO;
-                      }
-        else {
+        } else {
             return EdificioDAO;
         }
     }
-    
+
 }
