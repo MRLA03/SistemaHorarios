@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mx.dreamcatchersoftware.ui;
 
 import java.io.IOException;
@@ -27,10 +22,10 @@ public class CarreraUI {
     private Carrera carrera;
     private String palabraBuscada;
     private List<Carrera> resultados;
-    private String claveCarreraSeleccionada;
+    private String paramName;
     
     public CarreraUI(){
-        carreraHelper = new CarreraHelper();
+        carreraHelper = new CarreraHelper();       
     }
     
     @PostConstruct
@@ -38,28 +33,26 @@ public class CarreraUI {
         carrera= new Carrera();
         resultados = new ArrayList<>();
         resultados=consultarCarrera();
-        claveCarreraSeleccionada = "";
+        paramName = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("paramName");        
     }
 
     public void registrarCarrera() throws IOException{
-        Carrera ca = new Carrera();
         if(carrera.getClaveCarrera().isEmpty() || carrera.getNombreCarrera().isEmpty() || carrera.getPlan().isEmpty() || carrera.getBancoHoras()==null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));
         }else if(carrera.getNombreCarrera().matches("^[a-zA-Z\\s]+$")==false){
-                        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "El nombre solo puede tener letras",""));
-
+        // NOTA DE ALEJANDRO: NO SE DONDE ESTE MEJOR ESTA CONDICION, AQUI O EN EL DELEGATE
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "El nombre solo puede tener letras",""));
         }else{
             carreraHelper.registrarCarrera(carrera.getClaveCarrera(), carrera.getNombreCarrera(), carrera.getPlan(), carrera.getBancoHoras());            
         }
         resultados=consultarCarrera();
     }
     
-    public List consultarCarrera(){
+    public List consultarCarrera(){ 
         return carreraHelper.consultarCarrera();
     }
     
     public void busquedaDinamica(){
-        
         if(palabraBuscada != null && !palabraBuscada.isEmpty()){
             try{
                 resultados = carreraHelper.consultarCarreraNombreClave(palabraBuscada);
@@ -69,6 +62,17 @@ public class CarreraUI {
         }else{
             resultados = carreraHelper.consultarCarrera();
         }
+    }   
+    
+    public void modificarCarrera() throws IOException{
+        if(carrera.getNombreCarrera().isEmpty() || carrera.getPlan().isEmpty() || carrera.getBancoHoras()==null){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));            
+        }else if(carrera.getNombreCarrera().matches("^[a-zA-Z\\s]+$")==false){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "El nombre solo puede tener letras",""));                        
+        }else{
+            carreraHelper.modificarCarrera(paramName, carrera.getNombreCarrera(), carrera.getPlan(), carrera.getBancoHoras());
+        }        
+        resultados=consultarCarrera();
     }
 
     public Carrera getCarrera() {
@@ -93,15 +97,13 @@ public class CarreraUI {
 
     public void setResultados(List<Carrera> resultados) {
         this.resultados = resultados;
-    }    
-
-    public String getClaveCarreraSeleccionada() {
-        return claveCarreraSeleccionada;
+    }       
+    
+    public String getParamName() {
+        return paramName;
     }
 
-    public void setClaveCarreraSeleccionada(String claveCarreraSeleccionada) {
-        this.claveCarreraSeleccionada = claveCarreraSeleccionada;
+    public void setParamName(String paramName) {
+        this.paramName = paramName;
     }
-    
-    
 }

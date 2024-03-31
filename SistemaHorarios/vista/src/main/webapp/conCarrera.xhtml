@@ -54,19 +54,25 @@
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value=""/>
-                    </f:facet>                
-                    <p:commandButton action="#{carreraUI.setCarrera(carre.getClaveCarrera())}" styleClass="btn btn-primary" onclick="PF('dialogo').show();">
-                        <i class="fas fa-pen-to-square" style="color: #808080;"></i>
+                    </f:facet>
+                    <p:commandButton value="M" action="modCarrera.xhtml">
+                        <f:param name="paramName" value="#{carre.getClaveCarrera()}"/>
                     </p:commandButton>
-                </p:column>
-
+                    <p:commandButton value="E"/>                                      
+                </p:column>                
             </p:dataTable>
         </h:form>
-        <p:dialog header="Modificar" widgetVar="dialogo" resizable="false">
-            <!-- Contenido de la ventana emergente aquí -->
+        <!--<p:dialog header="Modificar" widgetVar="dialogo" resizable="false">
+            <!-- Contenido de la ventana emergente aquí 
             <h:outputText value="Contenido de la ventana emergente..." />                        
-            <h:outputText value="HOLA#{carreraUI.getClaveCarreraSeleccionada()}" />   
-        </p:dialog>
+            <h:outputText value="HOLA{carreraUI.getClaveCarreraSeleccionada()}" />   
+        </p:dialog>      
+                    </f:facet>                
+                    <p:commandButton action="{carreraUI.setCarrera(carre.getClaveCarrera())}" styleClass="btn btn-primary" onclick="PF('dialogo').show();">
+                        <i class="fas fa-pen-to-square" style="color: #808080;"></i>
+                    </p:commandButton>
+                </p:column>-->
+
     </h:body>
     <!--<style>
         /* Estilo para el header de la tabla */

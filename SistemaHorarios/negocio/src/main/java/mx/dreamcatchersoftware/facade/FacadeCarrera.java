@@ -31,6 +31,10 @@ public class FacadeCarrera {
 
     public List consultarCarreraNombreClave(String busqueda){
         return delegateCarrera.consultarCarreraNombreClave(busqueda);
+    }
+
+    public int modificarCarrera(String clave_carrera, String nombre_carrera, String plan, int bancoh) {
+        return delegateCarrera.modificarCarrera(clave_carrera, nombre_carrera, plan, bancoh);
     }    
     
     public List consultarCarreraNombre(String busquedaNombre){

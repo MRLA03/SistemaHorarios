@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"          
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions"          
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pm="http://primefaces.org/mobile">
+    <h:head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/primeicons/4.1.0/primeicons.min.css"/>
+        <link rel="preconnect" href="https://rsms.me/"/>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>  
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <title>INICIO</title>        
+    </h:head>
+    <h:body>
+            <h:form style="margin:1px;"> 
+                <!--
+                BOTON PARA REDIRECCIONAR CON ICONO
+                <button type="button" onclick="window.location.href = 'index.xhtml';" class="btn btn-outline-primary" style="width:100%; font-size: 10px;"><i class="pi pi-check"/></button>
+                -->
+                <p:commandButton value="B1" action="#{bean.metodo}" style="width: 100%;font-size: 10px;"/>
+                <p:commandButton value="B2" action="#{bean.otroMetodo}" style="width: 100%; font-size: 10px;" />
+                <p:commandButton value="B3" action="#{bean.otroMetodo}" style="width: 100%; font-size: 10px;" />
+                <p:commandButton value="B4" action="#{bean.otroMetodo}" style="width: 100%; font-size: 10px;" />
+                <p:commandButton value="B5" action="#{bean.otroMetodo}" style="width: 100%; font-size: 10px;" />
+                <p:commandButton value="B6" action="#{bean.otroMetodo}" style="width: 100%; font-size: 10px;" />
+                <p:commandButton value="B7" action="#{bean.otroMetodo}" style="width: 100%; font-size: 10px;" />
+                <p:commandButton value="B8" action="#{bean.otroMetodo}" style="width: 100%; font-size: 10px;" />
+            </h:form>
+    </h:body>
+    <style>
+    </style>
+</html>
