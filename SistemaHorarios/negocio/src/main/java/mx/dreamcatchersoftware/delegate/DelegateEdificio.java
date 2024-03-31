@@ -64,7 +64,7 @@ public class DelegateEdificio {
     public List consultarEdificioNombreClave(String busqueda) {
         List<Edificio> edificios = new ArrayList<>();
         try {
-            edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio WHERE nombreEdificio LIKE '%" + busqueda + "%' OR claveEdificio LIKE '%" + busqueda + "%' ORDER BY nombreEdificio;");
+            edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio WHERE LOWER(nombreEdificio) LIKE LOWER('%" + busqueda + "%') OR claveEdificio LIKE '%" + busqueda + "%' ORDER BY nombreEdificio;");
         } catch (Exception e) {
             System.out.println("\n Error al consultar Carreras: " + e);
         }
