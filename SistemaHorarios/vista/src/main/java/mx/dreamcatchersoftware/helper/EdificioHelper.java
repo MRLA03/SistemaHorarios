@@ -5,10 +5,15 @@
  */
 package mx.dreamcatchersoftware.helper;
 
+import java.util.List;
+import mx.dreamcatchersoftware.integracion.ServiceFacadeLocator;
+
 /**
  *
  * @author DELL
  */
 public class EdificioHelper {
-    
+    public List consultarEdificio(){
+        return ServiceFacadeLocator.getInstanceFacadeEdificio().consultarEdificio();
+    }
 }

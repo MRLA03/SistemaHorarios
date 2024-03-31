@@ -39,34 +39,32 @@ public class SalaUI {
         resultados = new ArrayList<>();                
     }
 
-    /*public void registrarCarrera() throws IOException{
+    public void registrarSala() throws IOException{
         Sala sa = new Sala();
-        if(sala.getNombreSala().isEmpty() || sala.getCapacidad()==null || carrera.getPlan().isEmpty() || carrera.getBancoHoras()==null){
+        if(sala.getNombreSala().isEmpty() || sala.getCapacidad()==null || sala.getIdEdificio()==null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));
-        }else if(carrera.getNombreCarrera().matches("^[a-zA-Z\\s]+$")==false){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "El nombre solo puede tener letras",""));
         }else{
-            carreraHelper.registrarCarrera(carrera.getClaveCarrera(), carrera.getNombreCarrera(), carrera.getPlan(), carrera.getBancoHoras());            
+            salaHelper.registrarSala(sala.getNombreSala(), sala.getCapacidad(), sala.getIdEdificio(), sala.getNota());
         }
-        resultados=consultarCarrera();
+        resultados=consultarSala();
     }
-    */
-    /*public List consultarCarrera(){
-        return carreraHelper.consultarCarrera();
-    }*/
     
-    /*public void busquedaDinamica(){
+    public List consultarSala(){
+        return salaHelper.consultarSala();
+    }
+    
+    public void busquedaDinamica(){
         
         if(palabraBuscada != null && !palabraBuscada.isEmpty()){
             try{
-                resultados = carreraHelper.consultarCarreraNombreClave(palabraBuscada);
+                resultados = salaHelper.consultarSalaNombreClave(palabraBuscada);
             }catch(Exception e){
                 
             }
         }else{
-            resultados = carreraHelper.consultarCarrera();
+            resultados = salaHelper.consultarSala();
         }
-    }*/
+    }
 
     public Sala getSala() {
         return sala;

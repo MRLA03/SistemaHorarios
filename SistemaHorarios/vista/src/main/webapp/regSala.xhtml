@@ -30,7 +30,7 @@
                 <div class="panel-body">
                     <p:outputLabel value="Edificio"/>                    
                     <h:selectOneMenu value="#{salaUI.sala.idEdificio}" converter="omnifaces.SelectedItemsConverter">
-                        <f:selectItems value/>
+                        <f:selectItems value="#{edificioUI.consultarEdificio()}"/>
                     </h:selectOneMenu>
                 </div>
                 <div class="panel-body">

@@ -20,6 +20,25 @@ import mx.dreamcatchersoftware.helper.EdificioHelper;
  *
  * @author DELL
  */
+@ManagedBean(name = "edificioUI")
+@SessionScoped
 public class EdificioUI {
+    private final EdificioHelper edificioHelper;
+    private Edificio sala;
+    private String palabraBuscada;
+    private List<Edificio> resultados;    
     
+    public EdificioUI(){
+        edificioHelper = new EdificioHelper();
+    }
+    
+    @PostConstruct
+    public void init(){
+        sala= new Edificio();
+        resultados = new ArrayList<>();                
+    }    
+    
+    public List consultarEdificio(){
+        return edificioHelper.consultarEdificio();
+    }
 }
