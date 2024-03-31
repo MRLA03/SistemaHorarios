@@ -17,18 +17,29 @@
         <title>INICIO</title>        
     </h:head>
     <h:body>
+        <f:event type="preRenderView" listener="#{salaUI.init()}"/>
+        <f:event type="preRenderView" listener="#{salaUI.consultaId()}"/>
+        
+        <!--COSAS PARA PROBAR EL PASE DE VALORES-->
+        <!--<h:outputText value="Valor del parámetro recibido: {param.paramName}" />
+        <h:outputText value="Valor del parámetro recibido: {carreraUI.paramName}" />-->
+
         <h:form>               
             <div class="registro">                
                 <div class="panel-body">                        
-                    <p:outputLabel value="Nombre*"/>
+                    <p:outputLabel value="Id"/>
+                    <p:inputText class ="form-control" readonly="true" placeholder ="Id Sala" autocomplete="false" value ="#{salaUI.paramName}" />
+                </div>
+                <div class="panel-body">                        
+                    <p:outputLabel value="Nombre"/>
                     <p:inputText class ="form-control" placeholder ="Nombre de la Sala" autocomplete="false" value ="#{salaUI.sala.nombreSala}" />
                 </div>
                 <div class="panel-body">
-                    <p:outputLabel value="Capacidad*"/>
+                    <p:outputLabel value="Capacidad"/>
                     <p:spinner class ="spinner_control" placeholder="Capacidad" value="#{salaUI.sala.capacidad}" min="1" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>
                 <div class="panel-body">
-                    <p:outputLabel value="Edificio*"/>                    
+                    <p:outputLabel value="Edificio"/>                    
                     <h:selectOneMenu class ="form-control" value="#{salaUI.sala.idEdificio}" converter="omnifaces.SelectItemsConverter">
                         <f:selectItem itemLabel="Elige una opción" itemValue="#{null}" />
                         <f:selectItems value="#{edificioUI.consultarEdificio()}" var="edificio" itemValue="#{edificio}" itemLabel="#{edificio.getNombreEdificio()}"/>
@@ -39,8 +50,8 @@
                     <p:inputTextarea class="form-control" placeholder="Notas de la Sala, ej: tiene edificio, Computadoras..." rows="5" value="#{salaUI.sala.nota}" />
                 </div>
                 <div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Aceptar" actionListener ="#{salaUI.registrarSala()}" />
-                <p:commandButton update="messages" class = "btn btn-success" value ="Importar" />
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{salaUI.modificarSala()}" action="conSala.xhtml"/>
+                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" actionListener ="#{salaUI.Limpiar()}" action="conSala.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
                 </p:messages>

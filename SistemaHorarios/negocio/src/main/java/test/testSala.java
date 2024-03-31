@@ -48,7 +48,7 @@ public class testSala {
             System.out.println("La lista de subunidades de aprendizaje es nula.");
         }*/
 // MODIFICAR
-        int val = ServiceFacadeLocator.getInstanceFacadeSala().modificarCarrera(3, "AudioVisual - B", 50, 1, "Proyector, sillas tipo auditorio");
+        int val = ServiceFacadeLocator.getInstanceFacadeSala().modificarSala(3, "AudioVisual - B", 50, 1, "Proyector, sillas tipo auditorio");
         System.out.println("VAL: "+val);
     }
 }

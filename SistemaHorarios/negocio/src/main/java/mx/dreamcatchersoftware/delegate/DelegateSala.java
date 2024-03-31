@@ -73,6 +73,16 @@ public class DelegateSala {
         return salas;
     }
     
+    public Sala consultarSalaId(String busqueda){
+        List<Sala> salas = new ArrayList<>();
+        try {
+            salas = ServiceLocator.getInstanceSalaDAO().executeQuery("SELECT * FROM sala WHERE idSala = "+busqueda+";");            
+        } catch (Exception e) {
+            System.out.println("\n Error al consultar Sala por Id o Nombre: " + e);
+        }
+        return salas.get(0);
+    }
+    
     public List consultarSalaIdNombre(String busqueda){
         List<Sala> salas = new ArrayList<>();
         try {
@@ -125,7 +135,7 @@ public class DelegateSala {
                     ServiceLocator.getInstanceSalaDAO().update(sal);
                     val=1;// Todo bien
                 }else{
-                    val = 3;// Existe la Sala, pero el Edificio que ingreso tampoco existe
+                    val = 3;// Existe la Sala, pero el Edificio que ingreso no existe
                 }
             }else{
                 val=2;// No existe esa Sala

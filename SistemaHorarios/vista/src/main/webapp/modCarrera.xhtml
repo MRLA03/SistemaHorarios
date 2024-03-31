@@ -20,8 +20,8 @@
         <f:event type="preRenderView" listener="#{carreraUI.init()}"/>
         
         <!--COSAS PARA PROBAR EL PASE DE VALORES-->
-        <!--<h:outputText value="Valor del parámetro recibido: #{param.paramName}" />
-        <h:outputText value="Valor del parámetro recibido: #{carreraUI.paramName}" />-->
+        <!--<h:outputText value="Valor del parámetro recibido: {param.paramName}" />
+        <h:outputText value="Valor del parámetro recibido: {carreraUI.paramName}" />-->
 
         <h:form>               
             <div class="registro">
@@ -40,6 +40,9 @@
                 <div class="panel-body">
                     <p:outputLabel value="Banco de horas"/>
                     <p:inputText class ="form-control"  placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" />
+                </div><div style="text-align: center;">
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{carreraUI.modificarCarrera}" />
+                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conCarrera.xhtml" />                    
                 </div>
                 <div style="text-align: center;">
                     <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{carreraUI.modificarCarrera}" />

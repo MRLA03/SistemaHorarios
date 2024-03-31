@@ -20,53 +20,56 @@
         <h:form id="form">
             <p:growl id="msgs" showDetail="true"/>
             <div style="text-align: center; margin: 5px">
-                <p:inputText class ="form-control" placeholder="Busqueda por nombre o clave" id="searchInput" value="#{carreraUI.palabraBuscada}">
-                <p:ajax event="keyup" update="searchResults" listener="#{carreraUI.busquedaDinamica()}" />
+                <div class="panel-body">
+                    <p:outputLabel value="Edificio"/>                    
+                    <h:selectOneMenu class ="form-control" value="#{salaUI.filtrarEdificio}" converter="omnifaces.SelectItemsConverter">
+                        <f:selectItem itemLabel="Elige una opción" itemValue="#{-1}" />
+                        <f:selectItems value="#{edificioUI.consultarEdificio()}" var="edificio" itemValue="#{edificio.getIdEdificio()}" itemLabel="#{edificio.getNombreEdificio()}"/>
+                        <p:ajax event="change" update="searchResults" listener="#{salaUI.busquedaDinamica()}" />
+                    </h:selectOneMenu>                    
+                </div>
+                <p:inputText class ="form-control" placeholder="Busqueda por nombre o clave" id="searchInput" value="#{salaUI.palabraBuscada}">
+                <p:ajax event="keyup" update="searchResults" listener="#{salaUI.busquedaDinamica()}" />
             </p:inputText>
             </div>
             <!--PAGINACION DE TABLA-->
             <!--<p:dataTable paginator="true" rows="10" rowsPerPageTemplate="5,10,15" id="searchResults" var="carre" value="" class="custom-table" emptyMessage="No se encontraron registros"> -->
-            <p:dataTable id="searchResults" var="carre" value="#{carreraUI.resultados}" class="custom-table" emptyMessage="No se encontraron registros">                
+            <p:dataTable id="searchResults" var="sal" value="#{salaUI.resultados}" class="custom-table" emptyMessage="No se encontraron registros">                
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value="Clave"/>
+                        <h:outputText value="Id"/>
                     </f:facet>
-                    <h:outputText id="clave" value="#{carre.getClaveCarrera()}"/>
+                    <h:outputText id="clave" value="#{sal.getIdSala()}"/>
                 </p:column>
                 <p:column>                    
                     <f:facet name="header">
                         <h:outputText value="Nombre"/>
                     </f:facet>
-                    <h:outputText value="#{carre.getNombreCarrera()}"/>                   
+                    <h:outputText value="#{sal.getNombreSala()}"/>                   
                 </p:column>
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value="Plan"/>
+                        <h:outputText value="Capacidad"/>
                     </f:facet>
-                    <h:outputText value="#{carre.getPlan()}"/>
+                    <h:outputText value="#{sal.getCapacidad()}"/>
                 </p:column>
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value="Banco de horas"/>
+                        <h:outputText value="Edificio"/>
                     </f:facet>
-                    <h:outputText value="#{carre.getBancoHoras()}"/>                    
-                </p:column>                 
+                    <h:outputText value="#{sal.getIdEdificio().getNombreEdificio()}"/>                    
+                </p:column>      
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value=""/>
-                    </f:facet>                
-                    <p:commandButton action="#{carreraUI.setCarrera(carre.getClaveCarrera())}" styleClass="btn btn-primary" onclick="PF('dialogo').show();">
-                        <i class="fas fa-pen-to-square" style="color: #808080;"></i>
+                        <h:outputText value="Acciones"/>
+                    </f:facet>
+                    <p:commandButton value="M" action="modSala.xhtmsall">
+                        <f:param name="paramName" value="#{sal.getIdSala()}"/>
                     </p:commandButton>
-                </p:column>
-
+                    <p:commandButton value="E"/>                                      
+                </p:column>  
             </p:dataTable>
-        </h:form>
-        <p:dialog header="Modificar" widgetVar="dialogo" resizable="false">
-            <!-- Contenido de la ventana emergente aquí -->
-            <h:outputText value="Contenido de la ventana emergente..." />                        
-            <h:outputText value="HOLA#{carreraUI.getClaveCarreraSeleccionada()}" />   
-        </p:dialog>
+        </h:form>       
     </h:body>
     <!--<style>
         /* Estilo para el header de la tabla */

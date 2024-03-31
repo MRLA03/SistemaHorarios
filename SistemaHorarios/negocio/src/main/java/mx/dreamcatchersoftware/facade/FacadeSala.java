@@ -36,7 +36,11 @@ public class FacadeSala {
         return delegateSala.filtrarSalaEdificio(salas, id_Edificio);
     }
     
-    public int modificarCarrera(int id_sala,String nombre_sala, int capacidad, int id_edificio, String nota) {
+    public int modificarSala(int id_sala,String nombre_sala, int capacidad, int id_edificio, String nota) {
         return delegateSala.modificarSala(id_sala, nombre_sala, capacidad, id_edificio, nota);
+    }
+    
+    public Sala consultarSalaId(String busqueda){
+        return delegateSala.consultarSalaId(busqueda);
     }
 }
