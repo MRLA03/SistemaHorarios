@@ -18,12 +18,13 @@
     </h:head>
     <h:body>
         <f:event type="preRenderView" listener="#{asignaturaUI.init()}"/>
+        <f:event type="preRenderView" listener="#{asignaturaUI.consultarAsignaturaId()}"/>
         
         <!--COSAS PARA PROBAR EL PASE DE VALORES-->
         <!--<h:outputText value="Valor del parámetro recibido: {param.paramName}" />
         <h:outputText value="Valor del parámetro recibido: {carreraUI.paramName}" />-->
 
-        <h:form>               
+        <!--<h:form>               
             <div class="registro">
                 <div class="panel-body">
                     <p:outputLabel value="Clave"/>
@@ -49,14 +50,14 @@
                     <p:outputLabel value="Horas laboratorio"/>
                     <p:spinner class ="form-control"  placeholder ="Horas laboratorio" autocomplete="false" value ="#{asignaturaUI.asignatura.horaLaboratorio}" />
                 </div>                <div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{asignaturaUI.modificarAsignatura}" />
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{asignaturaUI.modificarAsignatura()}" />
                     <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conCarrera.xhtml" />                    
                 </div>
                 
                 <p:messages id="messages" showDetail="true" closable="true">                     
                 </p:messages> 
             </div>          
-        </h:form> 
+        </h:form> -->
     </h:body>
     <style>
     </style>

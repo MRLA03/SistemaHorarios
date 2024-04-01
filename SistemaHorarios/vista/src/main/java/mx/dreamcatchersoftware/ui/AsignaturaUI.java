@@ -59,6 +59,10 @@ public class AsignaturaUI {
         return asignaturaHelper.consultarAsignatura();
     }
     
+    public void consultarAsignaturaId(){
+        asignatura=asignaturaHelper.consultarAsignaturaId(paramName);
+    }
+    
     public void busquedaDinamica(){
         
         if(palabraBuscada != null && !palabraBuscada.isEmpty()){

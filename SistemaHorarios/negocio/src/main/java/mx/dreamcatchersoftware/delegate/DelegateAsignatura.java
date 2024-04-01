@@ -50,6 +50,16 @@ public class DelegateAsignatura {
         return asignaturas;
     }
     
+    public Asignatura consultarAsignaturaId(String busqueda){
+        List<Asignatura> asignaturas = new ArrayList<>();
+        try {
+            asignaturas = ServiceLocator.getInstanceAsignaturaDAO().executeQuery("SELECT * FROM asignatura WHERE idAsignatura = " + busqueda + ";");
+        } catch (Exception e) {
+            System.out.println("\n Error al consultar Asignaturas: " + e);
+        }
+        return asignaturas.get(0);       
+    }
+    
     public List consultarAsignaturaNombreClave(String busqueda) {
         List<Asignatura> asignaturas = new ArrayList<>();
         try {
@@ -100,4 +110,5 @@ public class DelegateAsignatura {
         }
         return val;
     }
+    
 }

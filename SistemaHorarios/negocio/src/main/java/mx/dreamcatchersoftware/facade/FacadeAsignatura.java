@@ -7,6 +7,7 @@ package mx.dreamcatchersoftware.facade;
 
 import java.util.List;
 import mx.dreamcatchersoftware.delegate.DelegateAsignatura;
+import mx.dreamcatchersoftware.entidad.Asignatura;
 
 /**
  *
@@ -24,6 +25,10 @@ public class FacadeAsignatura {
     }    
     public List consultarAsignatura(){
         return delegateAsignatura.consultarAsignatura();
+    }
+    
+    public Asignatura consultarAsignaturaId(String busqueda){
+        return delegateAsignatura.consultarAsignaturaId(busqueda);
     }
 
     public List consultarAsignaturaNombreClave(String busqueda){

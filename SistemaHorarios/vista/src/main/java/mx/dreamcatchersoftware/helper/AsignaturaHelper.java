@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import mx.dreamcatchersoftware.entidad.Asignatura;
 import mx.dreamcatchersoftware.integracion.ServiceFacadeLocator;
 
 public class AsignaturaHelper implements Serializable {
@@ -28,6 +29,10 @@ public class AsignaturaHelper implements Serializable {
 
     public List consultarAsignatura() {
         return ServiceFacadeLocator.getInstanceFacadeAsignatura().consultarAsignatura();
+    }
+    
+    public Asignatura consultarAsignaturaId(String busqueda){
+        return ServiceFacadeLocator.getInstanceFacadeAsignatura().consultarAsignaturaId(busqueda);
     }
 
     public List consultarAsignaturaNombreClave(String busqueda) {

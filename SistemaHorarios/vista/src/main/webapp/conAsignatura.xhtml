@@ -63,9 +63,14 @@
                 </p:column>
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value=""/>
-                    </f:facet>                  
-                </p:column>                
+                        <h:outputText value="Acciones"/>
+                    </f:facet>
+                    <p:commandButton value="M" action="modAsignatura.xhtmsall">
+                        <f:param name="paramName" value="#{asignatura.getIdAsignatura()}"/>
+                    </p:commandButton>
+                    <p:commandButton value="E"/>                                      
+                </p:column>  
+                
             </p:dataTable>
         </h:form>
     </h:body>
