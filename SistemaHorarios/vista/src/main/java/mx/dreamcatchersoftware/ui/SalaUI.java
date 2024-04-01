@@ -49,7 +49,11 @@ public class SalaUI {
         if(sala.getNombreSala().isEmpty() || sala.getCapacidad()==null || sala.getIdEdificio()==null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));
         }else{
-            salaHelper.registrarSala(sala.getNombreSala(), sala.getCapacidad(), sala.getIdEdificio(), sala.getNota());
+            int val = salaHelper.registrarSala(sala.getNombreSala(), sala.getCapacidad(), sala.getIdEdificio(), sala.getNota());
+            if(val==1){
+                Limpiar();
+            }
+
         }
         resultados=consultarSala();
     }
@@ -59,8 +63,10 @@ public class SalaUI {
         if(sala.getNombreSala().isEmpty() || sala.getCapacidad()==null || sala.getIdEdificio()==null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));
         }else{
-            salaHelper.modificarSala(sala.getIdSala(),sala.getNombreSala(), sala.getCapacidad(), sala.getIdEdificio(), sala.getNota());
-            Limpiar();
+            int val = salaHelper.modificarSala(sala.getIdSala(),sala.getNombreSala(), sala.getCapacidad(), sala.getIdEdificio(), sala.getNota());
+            if(val==1){
+                Limpiar();
+            }
         }
         resultados=consultarSala();
     }

@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"          
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions"          
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"><!--xmlns:pm="http://primefaces.org/mobile"-->
+    <h:head>
+        <link rel="preconnect" href="https://rsms.me/"/>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>  
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="https://kit.fontawesome.com/c88c3ca108.js" crossorigin="anonymous"></script><!--FontAwesome-->
+        <title>INICIO</title> 
+    </h:head>
+    <h:body>
+        <f:event type="preRenderView" listener="#{maestroUI.consultarMaestro()}"/>
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true"/>
+            <div style="text-align: center; margin: 5px">
+                <div class="panel-body">
+                    <!--<p:outputLabel value="Tipo Maestro"/>                    -->
+                    <h:selectOneMenu class ="form-control" value="#{maestroUI.filtrarTipoEmpleado}" converter="omnifaces.SelectItemsConverter">
+                        <f:selectItem itemLabel="Elige una opción" itemValue="#{-1}" />                        
+                        <f:selectItem itemLabel="Maestro Tiempo Completo" itemValue="#{0}" />
+                        <f:selectItem itemLabel="Maestro Asignatura" itemValue="#{1}" />
+                        <f:selectItem itemLabel="Maestro Técnico" itemValue="#{2}" />
+                        <p:ajax event="change" update="searchResults" listener="#{maestroUI.busquedaDinamica()}" />
+                    </h:selectOneMenu>
+                </div>
+                <p:inputText class ="form-control" placeholder="Busqueda por nombre o clave" id="searchInput" value="#{maestroUI.palabraBuscada}">
+                <p:ajax event="keyup" update="searchResults" listener="#{maestroUI.busquedaDinamica()}" />
+            </p:inputText>
+            </div>
+            <!--PAGINACION DE TABLA-->
+            <!--<p:dataTable paginator="true" rows="10" rowsPerPageTemplate="5,10,15" id="searchResults" var="carre" value="" class="custom-table" emptyMessage="No se encontraron registros"> -->
+            <p:dataTable id="searchResults" var="mae" value="#{maestroUI.resultados}" class="custom-table" emptyMessage="No se encontraron registros">                
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="No.Empleado"/>
+                    </f:facet>
+                    <h:outputText id="clave" value="#{mae.getNEmpleado()}"/>
+                </p:column>
+                <p:column>                    
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"/>
+                    </f:facet>
+                    <h:outputText value="#{mae.getNombreMaestro()}"/>                   
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Tipo Empleado"/>
+                    </f:facet>
+                    <h:outputText value="#{mae.getTipo() == 0 ? 'Tiempo Completo' : (mae.getTipo() == 1 ? 'Asignatura' : (mae.getTipo() == 2 ? 'Técnico' : ''))}"/><!--mae.getTipo()-->
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Horas Investigación"/>
+                    </f:facet>
+                    <h:outputText value="#{mae.getHrsIE()}"/>                    
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Horas Adicionales"/>
+                    </f:facet>
+                    <h:outputText value="#{mae.getHrsad()}"/>                    
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Horas Maximas"/>
+                    </f:facet>
+                    <h:outputText value="#{mae.getHmax()}"/>                    
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Acciones"/>
+                    </f:facet>
+                    <p:commandButton value="M" action="modMaestro.xhtmsall">
+                        <f:param name="paramName" value="#{mae.getIdMaestro()}"/>
+                    </p:commandButton>
+                    <p:commandButton value="E"/>                                      
+                </p:column>  
+            </p:dataTable>
+        </h:form>       
+    </h:body>
+    <style>     
+        /* Estilo para la última celda de la tabla */
+        .custom-table tr{
+            border-right: transparent !important;
+            border-left:  transparent !important; 
+            
+        } 
+      
+        /* Estilo para las líneas horizontales de la tabla */
+        .custom-table tr{
+            border-bottom: 1px solid gray; /* Líneas horizontales grises */
+            background-color: transparent !important;
+            border-right:  1px solid green;
+        }             
+       
+        /* Estilo para la primera celda de la tabla */
+        .custom-table tr:last-child {
+            
+            border-right:   transparent !important; 
+        }          
+               
+        
+        /* Estilo para el header de la tabla */
+        .custom-table th {
+            background-color: transparent !important; /* Header transparente */
+            color: black; /* Texto negro */
+            border-left: transparent !important;            
+            border-right:  transparent !important;            
+            border-top: transparent !important;            
+            border-bottom: 1px solid green; /* Borde verde */
+        }
+    </style>
+</html>

@@ -26,7 +26,7 @@
                 <div class="panel-body">
                     <p:outputLabel value="Capacidad*"/>
                     <p:spinner class ="spinner_control" placeholder="Capacidad" value="#{salaUI.sala.capacidad}" min="1" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
-                </div>
+                </div>                
                 <div class="panel-body">
                     <p:outputLabel value="Edificio*"/>                    
                     <h:selectOneMenu class ="form-control" value="#{salaUI.sala.idEdificio}" converter="omnifaces.SelectItemsConverter">

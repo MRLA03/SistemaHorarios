@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import mx.dreamcatchersoftware.entidad.Edificio;
 import mx.dreamcatchersoftware.entidad.Sala;
 import mx.dreamcatchersoftware.integracion.ServiceFacadeLocator;
+import mx.dreamcatchersoftware.ui.SalaUI;
 
 /**
  *
@@ -18,15 +19,15 @@ import mx.dreamcatchersoftware.integracion.ServiceFacadeLocator;
  */
 public class SalaHelper {
     public int registrarSala(String nombre_sala, int capacidad, Edificio id_edificio, String nota) {
-        int val = -1;
+        int val = -1;        
         try{            
             val = ServiceFacadeLocator.getInstanceFacadeSala().registrarSala(nombre_sala, capacidad, id_edificio.getIdEdificio(), nota);
             if(val == 1){
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro Exitoso", ""));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro Exitoso", ""));                
             }else if(val == 0){
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Registrar",""));                   
             }else if(val == 2){
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Clave ya Registrada",""));                   
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Sala ya Existente",""));                   
             }else if(val == 3){
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error en el Edificio",""));                   
             }
