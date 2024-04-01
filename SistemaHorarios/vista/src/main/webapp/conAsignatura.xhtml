@@ -19,7 +19,7 @@
     <h:body>
         <h:form>
             <div style="text-align: center; margin: 5px">
-                <p:inputText class ="form-control" placeholder="Busqueda por nombre o clave" id="searchInput" value="#{AsignaturaUI.palabraBuscada}">
+                <p:inputText class ="form-control" placeholder="Busqueda por nombre o clave" id="searchInput" value="#{asignaturaUI.palabraBuscada}">
                 <p:ajax event="keyup" update="searchResults" listener="#{asignaturaUI.busquedaDinamica()}" />
             </p:inputText>
             </div>

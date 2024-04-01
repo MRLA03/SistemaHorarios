@@ -34,4 +34,16 @@ public class AsignaturaHelper implements Serializable {
         return ServiceFacadeLocator.getInstanceFacadeAsignatura().consultarAsignaturaNombreClave(busqueda);
     }
 
+    public int modificarAsignatura(String clave_asignatura, String nombre_asignatura, int Horas_clase, int Horas_taller, int Horas_practica, int Horas_laboratorio) {
+        try{
+            if(ServiceFacadeLocator.getInstanceFacadeAsignatura().registrarAsignatura(clave_asignatura, nombre_asignatura, Horas_clase, Horas_taller, Horas_practica, Horas_laboratorio)!=0){
+                return ServiceFacadeLocator.getInstanceFacadeAsignatura().modificarAsignatura(clave_asignatura, nombre_asignatura, Horas_clase, Horas_taller, Horas_practica, Horas_laboratorio);                
+            }else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos",""));                                   
+            }
+        }catch(Exception e){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos",""));               
+        }
+        return ServiceFacadeLocator.getInstanceFacadeAsignatura().modificarAsignatura(clave_asignatura, nombre_asignatura, Horas_clase, Horas_taller, Horas_practica, Horas_laboratorio);
+    }
 }

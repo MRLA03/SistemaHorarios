@@ -29,18 +29,18 @@
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Horas Clase"/>
-                    <p:inputText class ="form-control" placeholder="Horas clase " value="#{asignaturaUI.asignatura.horaClase}" />
+                    <p:spinner class ="form-control" placeholder="Horas clase " value="#{asignaturaUI.asignatura.horaClase}" />
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Horas Taller"/>
-                    <p:inputText class ="form-control" placeholder ="Horas taller" autocomplete="false" value ="#{asignaturaUI.asignatura.horaTaller}" />
+                    <p:spinner class ="form-control" placeholder ="Horas taller" autocomplete="false" value ="#{asignaturaUI.asignatura.horaTaller}" />
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Horas Practicas"/>
-                    <p:inputText class ="form-control" placeholder ="Horas practicas" autocomplete="false" value ="#{asignaturaUI.asignatura.horaPractica}" />
+                    <p:spinner class ="form-control" placeholder ="Horas practicas" autocomplete="false" value ="#{asignaturaUI.asignatura.horaPractica}" />
                 </div>                <div class="panel-body">
                     <p:outputLabel value="Horas Laboratorio"/>
-                    <p:inputText class ="form-control" placeholder ="Horas laboratorio" autocomplete="false" value ="#{asignaturaUI.asignatura.horaLaboratorio}" />
+                    <p:spinner class ="form-control" placeholder ="Horas laboratorio" autocomplete="false" value ="#{asignaturaUI.asignatura.horaLaboratorio}" />
                 </div>
                 <div style="text-align: center;">
                     <p:commandButton update="messages" class = "btn btn-success" value ="Aceptar" actionListener ="#{asignaturaUI.registrarAsignatura}" />
