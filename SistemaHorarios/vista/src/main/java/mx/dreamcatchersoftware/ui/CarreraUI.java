@@ -52,9 +52,11 @@ public class CarreraUI {
         resultados=consultarCarrera();
     }
     
+    
     public List consultarCarrera(){
         return carreraHelper.consultarCarrera();
     }
+    
     
     public void busquedaDinamica(){
         

@@ -26,6 +26,10 @@ public class CarreraHelper implements Serializable{
         return ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera(clave_carrera, nombre_carrera, plan,bancoh);         
     }
     
+    
+    
+    
+    
     public List consultarCarrera(){
         return ServiceFacadeLocator.getInstanceFacadeCarrera().consultarCarrera();
     }

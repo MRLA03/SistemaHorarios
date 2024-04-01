@@ -5,7 +5,7 @@
  */
 package test;
 import mx.dreamcatchersoftware.integracion.ServiceFacadeLocator;
-import mx.dreamcatchersoftware.entidad.Carrera;
+
 import java.util.List;
 import mx.dreamcatchersoftware.entidad.Edificio;
 /**
@@ -15,7 +15,7 @@ import mx.dreamcatchersoftware.entidad.Edificio;
 public class testEdificio {
     
     public static void main(String[] args) {
-    int val6 = ServiceFacadeLocator.getInstanceFacadeEdificio().registrarEdificio("3","Agua");
+    int val6 = ServiceFacadeLocator.getInstanceFacadeEdificio().registrarEdificio("0001","alma");
         System.out.println("VAL Edificio: " + val6);
         System.out.println();
     
