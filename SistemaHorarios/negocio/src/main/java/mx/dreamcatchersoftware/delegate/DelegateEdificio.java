@@ -60,6 +60,15 @@ public class DelegateEdificio {
         return edificios;
     }
 
+    public Edificio consultaEdificioID(String busqueda){
+        List<Edificio> edificios = new ArrayList<>();
+        try {
+            edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio WHERE idEdificio =" + busqueda + ";");
+        } catch (Exception e) {
+            System.out.println("\n Error al consultar Carreras: " + e);
+        }
+        return edificios.get(0);
+    }
     
     public List consultarEdificioNombreClave(String busqueda) {
         List<Edificio> edificios = new ArrayList<>();
@@ -73,33 +82,25 @@ public class DelegateEdificio {
 
     
     public int modificarEdificio(String clave_Edificio, String nombre_Edificio) {
+        List<Edificio> edificios = new ArrayList<>();
         int val = 0; 
-        try {
-            if(clave_Edificio.isEmpty()|| nombre_Edificio.isEmpty()){
-            System.out.println("No se permiten campos vacios");
-        }
-            
-           
-            List<Edificio> edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio WHERE claveedificio = '" + clave_Edificio + "'");
-            if (!nombre_Edificio.isEmpty()) {
-            System.out.println("Ya existe un edificio con el mismo nombre.");
-            return val;
-        }
-            
-            
+        try {                     
+            edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio WHERE claveEdificio = '" + clave_Edificio + "';");                                  
             if (!edificios.isEmpty()) {
                 Edificio ed = edificios.get(0);
-
-                //Actualiz
+                //Actualizar
+                ed.setIdEdificio(edificios.get(0).getIdEdificio());
+                ed.setClaveEdificio(clave_Edificio);
                 ed.setNombreEdificio(nombre_Edificio);
-
                 ServiceLocator.getInstanceEdificioDAO().update(ed);
                 val = 1; //Todo correcto
             } else {
                 System.out.println("No se encontró ninguna Edificio con la clave especificada.");
+                val = 2;// Si no hay ningun edificio con esa clave
             }
         } catch (Exception e) {
             System.out.println("\n Error al modificar el Edificio: " + e);
+            val = 0;
         }
         return val;
     }

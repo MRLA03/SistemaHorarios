@@ -28,23 +28,25 @@ public class AsignaturaUI {
     private Asignatura asignatura;
     private String palabraBuscada;
     private List<Asignatura> resultados;
-    
+    private String paramName;
+
     public AsignaturaUI(){
         asignaturaHelper = new AsignaturaHelper();
-    }
+  }
     
     @PostConstruct
     public void init(){
         asignatura= new Asignatura();
         resultados = new ArrayList<>();
-        resultados=consultarAsignatura();
+        resultados=consultarAsignatura();        
+        paramName = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("paramName");        
     }
 
     public void registrarAsignatura() throws IOException{
         Asignatura ca = new Asignatura();
         if(asignatura.getClaveAsignatura().isEmpty() || asignatura.getNombreAsignatura().isEmpty() || asignatura.getHoraClase()==null || asignatura.getHoraTaller()==null || asignatura.getHoraLaboratorio()==null || asignatura.getHoraPractica()==null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));
-        }else if(asignatura.getNombreAsignatura().matches("^[a-zA-Z\\s]+$")==false){
+        }else if(asignatura.getNombreAsignatura().matches("^[\\p{L}a-zA-Z\\s]+$")==false){
                         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "El nombre solo puede tener letras",""));
 
         }else{
@@ -55,6 +57,10 @@ public class AsignaturaUI {
     
     public List consultarAsignatura(){
         return asignaturaHelper.consultarAsignatura();
+    }
+    
+    public void consultarAsignaturaId(){
+        asignatura=asignaturaHelper.consultarAsignaturaId(paramName);
     }
     
     public void busquedaDinamica(){
@@ -70,6 +76,17 @@ public class AsignaturaUI {
         }
     }
 
+    public void modificarAsignatura() throws IOException{
+        if(asignatura.getNombreAsignatura().isEmpty() || asignatura.getHoraClase()==null || asignatura.getHoraTaller()==null || asignatura.getHoraPractica()==null || asignatura.getHoraLaboratorio()==null){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));            
+        }else if(asignatura.getNombreAsignatura().matches("^[a-zA-Z\\s]+$")==false){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "El nombre solo puede tener letras",""));                        
+        }else{
+            asignaturaHelper.modificarAsignatura(asignatura.getClaveAsignatura(), asignatura.getNombreAsignatura(), asignatura.getHoraClase(), asignatura.getHoraTaller(), asignatura.getHoraPractica(), asignatura.getHoraLaboratorio());
+        }        
+        resultados=consultarAsignatura();
+    }
+        
     public Asignatura getAsignatura() {
         return asignatura;
     }
@@ -94,7 +111,15 @@ public class AsignaturaUI {
         this.resultados = resultados;
     }
     
+    public String getParamName() {
+        return paramName;
+    }
+
+    public void setParamName(String paramName) {
+        this.paramName = paramName;
+    }    
     
-    
-    
+    public void Limpiar(){
+        this.asignatura  = new Asignatura();
+    }
 }

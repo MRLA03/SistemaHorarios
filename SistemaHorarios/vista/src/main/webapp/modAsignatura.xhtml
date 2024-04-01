@@ -17,44 +17,47 @@
         <title>INICIO</title>        
     </h:head>
     <h:body>
-        <f:event type="preRenderView" listener="#{salaUI.init()}"/>
-        <f:event type="preRenderView" listener="#{salaUI.consultaId()}"/>
+        <f:event type="preRenderView" listener="#{asignaturaUI.init()}"/>
+        <f:event type="preRenderView" listener="#{asignaturaUI.consultarAsignaturaId()}"/>
         
         <!--COSAS PARA PROBAR EL PASE DE VALORES-->
         <!--<h:outputText value="Valor del parámetro recibido: {param.paramName}" />
         <h:outputText value="Valor del parámetro recibido: {carreraUI.paramName}" />-->
 
         <h:form>               
-            <div class="registro">                
-                <div class="panel-body">                        
-                    <p:outputLabel value="Id"/>
-                    <p:inputText class ="form-control" readonly="true" placeholder ="Id Sala" autocomplete="false" value ="#{salaUI.paramName}" />
+            <div class="registro">
+                <div class="panel-body">
+                    <p:outputLabel value="Modificar"/>                    
                 </div>
+                <div class="panel-body">
+                    <p:outputLabel value="Clave"/>
+                    <p:inputText class ="form-control" placeholder ="Clave" readonly="true" autocomplete="false" value ="#{asignaturaUI.asignatura.claveAsignatura}" />
+                </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control" placeholder ="Nombre de la Sala" autocomplete="false" value ="#{salaUI.sala.nombreSala}" />
+                    <p:inputText class ="form-control" placeholder ="Nombre de la Asignatura" autocomplete="false" value ="#{asignaturaUI.asignatura.nombreAsignatura}" />
                 </div>
                 <div class="panel-body">
-                    <p:outputLabel value="Capacidad"/>
-                    <p:spinner class ="spinner_control" placeholder="Capacidad" value="#{salaUI.sala.capacidad}" min="1" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+                    <p:outputLabel value="Horas Clase"/>
+                    <p:spinner class ="form-control" placeholder="Horas clase " value="#{asignaturaUI.asignatura.horaClase}" min = "1" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>
                 <div class="panel-body">
-                    <p:outputLabel value="Edificio"/>                    
-                    <h:selectOneMenu class ="form-control" value="#{salaUI.sala.idEdificio}" converter="omnifaces.SelectItemsConverter">
-                        <f:selectItem itemLabel="Elige una opción" itemValue="#{null}" />
-                        <f:selectItems value="#{edificioUI.consultarEdificio()}" var="edificio" itemValue="#{edificio}" itemLabel="#{edificio.getNombreEdificio()}"/>
-                    </h:selectOneMenu>
+                    <p:outputLabel value="Horas Taller"/>
+                    <p:spinner class ="form-control" placeholder ="Horas taller" autocomplete="false" value ="#{asignaturaUI.asignatura.horaTaller}" min ="0" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>
                 <div class="panel-body">
-                    <p:outputLabel value="Notas"/>
-                    <p:inputTextarea class="form-control" placeholder="Notas de la Sala, ej: tiene edificio, Computadoras..." rows="5" value="#{salaUI.sala.nota}" />
+                    <p:outputLabel value="Horas Practicas"/>
+                    <p:spinner class ="form-control" placeholder ="Horas practicas" autocomplete="false" value ="#{asignaturaUI.asignatura.horaPractica}" min = "0" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+                </div>                <div class="panel-body">
+                    <p:outputLabel value="Horas Laboratorio"/>
+                    <p:spinner class ="form-control" placeholder ="Horas laboratorio" autocomplete="false" value ="#{asignaturaUI.asignatura.horaLaboratorio}" min = "0" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>
                 <div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{salaUI.modificarSala()}"/>
-                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" actionListener ="#{salaUI.Limpiar()}" action="conSala.xhtml" />                    
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{asignaturaUI.modificarAsignatura()}"/>
+                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" actionListener ="#{asignaturaUI.Limpiar()}" action="conAsignatura.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
-                </p:messages>
+                </p:messages> 
             </div>          
         </h:form> 
     </h:body>

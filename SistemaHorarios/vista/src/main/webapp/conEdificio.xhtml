@@ -8,72 +8,47 @@
       xmlns:o="http://omnifaces.org/ui"
       xmlns:of="http://omnifaces.org/functions"          
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"><!--xmlns:pm="http://primefaces.org/mobile"-->
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pm="http://primefaces.org/mobile">
     <h:head>
         <link rel="preconnect" href="https://rsms.me/"/>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>  
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <script src="https://kit.fontawesome.com/c88c3ca108.js" crossorigin="anonymous"></script><!--FontAwesome-->
         <title>INICIO</title> 
     </h:head>
     <h:body>
-        <h:form id="form">
-            <p:growl id="msgs" showDetail="true"/>
-            <div style="text-align: center; margin: 5px">                
-                <p:inputText class ="form-control" placeholder="Busqueda por nombre o clave" id="searchInput" value="#{asignaturaUI.palabraBuscada}">
-                    <p:ajax event="keyup" update="searchResults" listener="#{asignaturaUI.busquedaDinamica()}" />
+        <h:form>
+            <div style="text-align: center; margin: 5px">
+                <p:inputText class ="form-control" placeholder="Busqueda por nombre o clave" id="searchInput" value="#{edificioUI.palabraBuscada}">
+                <p:ajax event="keyup" update="searchResults" listener="#{edificioUI.busquedaDinamica()}" />
             </p:inputText>
             </div>
             <!--PAGINACION DE TABLA-->
             <!--<p:dataTable paginator="true" rows="10" rowsPerPageTemplate="5,10,15" id="searchResults" var="carre" value="" class="custom-table" emptyMessage="No se encontraron registros"> -->
-            <p:dataTable id="searchResults" var="asig" value="#{asignaturaUI.resultados}" class="custom-table" emptyMessage="No se encontraron registros">                
+            <p:dataTable id="searchResults" var="edif" value="#{edificioUI.resultados}" class="custom-table" emptyMessage="No se encontraron registros">
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="Clave"/>
                     </f:facet>
-                    <h:outputText id="clave" value="#{asig.getClaveAsignatura()}"/>
+                    <h:outputText value="#{edif.getClaveEdificio()}"/>
                 </p:column>
-                <p:column>                    
+                <p:column>
                     <f:facet name="header">
                         <h:outputText value="Nombre"/>
                     </f:facet>
-                    <h:outputText value="#{asig.getNombreAsignatura()}"/>                   
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Horas Clase"/>
-                    </f:facet>
-                    <h:outputText value="#{asig.getHoraClase()}"/>
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Horas Taller"/>
-                    </f:facet>
-                    <h:outputText value="#{asig.getHoraTaller()}"/>                    
-                </p:column>    
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Horas Practicas"/>
-                    </f:facet>
-                    <h:outputText value="#{asig.getHoraPractica()}"/>                    
-                </p:column> 
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Horas Laboratorio"/>
-                    </f:facet>
-                    <h:outputText value="#{asig.getHoraLaboratorio()}"/>                    
-                </p:column> 
+                    <h:outputText value="#{edif.getNombreEdificio()}"/>
+                </p:column>                
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="Acciones"/>
                     </f:facet>
-                    <p:commandButton value="M" action="modAsignatura.xhtmsall">
-                        <f:param name="paramName" value="#{asig.getIdAsignatura()}"/>
+                    <p:commandButton value="M" action="modEdificio.xhtml">
+                        <f:param name="paramNameC" value="#{edif.getIdEdificio()}"/>
                     </p:commandButton>
                     <p:commandButton value="E"/>                                      
-                </p:column>  
+                </p:column>                                   
             </p:dataTable>
-        </h:form>       
+        </h:form>
     </h:body>
     <style>     
         /* Estilo para la última celda de la tabla */

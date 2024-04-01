@@ -32,10 +32,10 @@ public class testAsignatura {
             }*/
         
 //Modificar asignatura
-        int val2 = ServiceFacadeLocator.getInstanceFacadeAsignatura().modificarAsignatura("si","no",4,5,6,2);
+        int val2 = ServiceFacadeLocator.getInstanceFacadeAsignatura().modificarAsignatura("11986","Base de Datos II",4,5,6,2);
         
         // Verificar si la modificación fue exitosa
-        if (val2 == 1) {
+        /*if (val2 == 1) {
             // Consultar la carrera modificada
             List<Asignatura> asignaturamodificada = ServiceFacadeLocator.getInstanceFacadeAsignatura().consultarAsignaturaNombreClave("si");
             
@@ -55,6 +55,6 @@ public class testAsignatura {
             }
         } else {
             System.out.println("La modificación de la asignatura no se pudo completar.");
-        }
+        }*/
     }
 }

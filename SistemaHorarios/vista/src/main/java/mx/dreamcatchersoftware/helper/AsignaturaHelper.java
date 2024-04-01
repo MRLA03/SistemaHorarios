@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import mx.dreamcatchersoftware.entidad.Asignatura;
 import mx.dreamcatchersoftware.integracion.ServiceFacadeLocator;
 
 public class AsignaturaHelper implements Serializable {
@@ -29,9 +30,25 @@ public class AsignaturaHelper implements Serializable {
     public List consultarAsignatura() {
         return ServiceFacadeLocator.getInstanceFacadeAsignatura().consultarAsignatura();
     }
+    
+    public Asignatura consultarAsignaturaId(String busqueda){
+        return ServiceFacadeLocator.getInstanceFacadeAsignatura().consultarAsignaturaId(busqueda);
+    }
 
     public List consultarAsignaturaNombreClave(String busqueda) {
         return ServiceFacadeLocator.getInstanceFacadeAsignatura().consultarAsignaturaNombreClave(busqueda);
     }
 
+    public int modificarAsignatura(String clave_asignatura, String nombre_asignatura, int Horas_clase, int Horas_taller, int Horas_practica, int Horas_laboratorio) {
+        try{
+            if(ServiceFacadeLocator.getInstanceFacadeAsignatura().registrarAsignatura(clave_asignatura, nombre_asignatura, Horas_clase, Horas_taller, Horas_practica, Horas_laboratorio)!=0){
+                return ServiceFacadeLocator.getInstanceFacadeAsignatura().modificarAsignatura(clave_asignatura, nombre_asignatura, Horas_clase, Horas_taller, Horas_practica, Horas_laboratorio);                
+            }else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos",""));                                   
+            }
+        }catch(Exception e){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos",""));               
+        }
+        return ServiceFacadeLocator.getInstanceFacadeAsignatura().modificarAsignatura(clave_asignatura, nombre_asignatura, Horas_clase, Horas_taller, Horas_practica, Horas_laboratorio);
+    }
 }

@@ -6,6 +6,7 @@
 package mx.dreamcatchersoftware.facade;
 import mx.dreamcatchersoftware.delegate.DelegateEdificio;
 import java.util.List;
+import mx.dreamcatchersoftware.entidad.Edificio;
 /**
  *
  * @author DELL
@@ -24,7 +25,9 @@ public class FacadeEdificio {
    public List consultarEdificio(){
        return delegateEdificio.consultarEdificio();
    }
-    
+   public Edificio consultaEdificioID(String busqueda){
+       return delegateEdificio.consultaEdificioID(busqueda);
+   } 
    public List consultarEdificioNombreClave(String busqueda){
         return delegateEdificio.consultarEdificioNombreClave(busqueda);
     }   
