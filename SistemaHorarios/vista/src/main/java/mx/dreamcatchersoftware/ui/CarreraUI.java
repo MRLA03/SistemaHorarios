@@ -39,7 +39,7 @@ public class CarreraUI {
     public void registrarCarrera() throws IOException{
         if(carrera.getClaveCarrera().isEmpty() || carrera.getNombreCarrera().isEmpty() || carrera.getPlan().isEmpty() || carrera.getBancoHoras()==null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));
-        }else if(carrera.getNombreCarrera().matches("^[\\p{L}a-zA-Z\\s]+$") == false){
+        }else if(carrera.getNombreCarrera().matches("^[a-zA-Z\\s]+$")==false){
         // NOTA DE ALEJANDRO: NO SE DONDE ESTE MEJOR ESTA CONDICION, AQUI O EN EL DELEGATE
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "El nombre solo puede tener letras",""));
         }else{
@@ -97,8 +97,8 @@ public class CarreraUI {
 
     public void setResultados(List<Carrera> resultados) {
         this.resultados = resultados;
-    }       
-    
+    }
+
     public String getParamName() {
         return paramName;
     }

@@ -7,6 +7,7 @@ package mx.dreamcatchersoftware.facade;
 
 import java.util.List;
 import mx.dreamcatchersoftware.delegate.DelegateCarrera;
+import mx.dreamcatchersoftware.entidad.Carrera;
 
 /**
  *
@@ -29,6 +30,9 @@ public class FacadeCarrera {
         return delegateCarrera.consultarCarrera();
     }
 
+    public Carrera consultarCarreraId(String busqueda){
+        return delegateCarrera.consultarCarreraId(busqueda);
+    }
     public List consultarCarreraNombreClave(String busqueda){
         return delegateCarrera.consultarCarreraNombreClave(busqueda);
     }

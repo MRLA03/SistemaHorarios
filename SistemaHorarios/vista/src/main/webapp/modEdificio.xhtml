@@ -31,7 +31,7 @@
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control"  placeholder ="Nombre del Edificio" autocomplete="false" value ="#{edificioUI.edificio.nombreEdificio}" />
+                    <p:inputText class ="form-control"  placeholder ="Nombre del Edificio" autocomplete="false" value ="#{edificioUI.edificio.nombreEdificio}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')"/>
                 </div>
                 
                 

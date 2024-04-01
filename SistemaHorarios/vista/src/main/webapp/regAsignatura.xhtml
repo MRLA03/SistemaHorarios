@@ -21,11 +21,11 @@
             <div class="registro">
                 <div class="panel-body">
                     <p:outputLabel value="Clave"/>
-                    <p:inputText class ="form-control" placeholder ="Clave" autocomplete="false" value ="#{asignaturaUI.asignatura.claveAsignatura}" />
+                    <p:inputText class ="form-control" placeholder ="Clave" autocomplete="false" value ="#{asignaturaUI.asignatura.claveAsignatura}" onkeyup=" this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control" placeholder ="Nombre de la Asignatura" autocomplete="false" value ="#{asignaturaUI.asignatura.nombreAsignatura}" />
+                    <p:inputText class ="form-control" placeholder ="Nombre de la Asignatura" autocomplete="false" value ="#{asignaturaUI.asignatura.nombreAsignatura}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')"/>
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Horas Clase"/>

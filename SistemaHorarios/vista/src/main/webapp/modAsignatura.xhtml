@@ -35,7 +35,7 @@
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control" placeholder ="Nombre de la Asignatura" autocomplete="false" value ="#{asignaturaUI.asignatura.nombreAsignatura}" />
+                    <p:inputText class ="form-control" placeholder ="Nombre de la Asignatura" autocomplete="false" value ="#{asignaturaUI.asignatura.nombreAsignatura}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')"/>
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Horas Clase"/>

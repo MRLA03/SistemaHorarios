@@ -31,18 +31,15 @@
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control"  placeholder ="Nombre de la carrera" autocomplete="false" value ="#{carreraUI.carrera.nombreCarrera}" />
+                    <p:inputText class ="form-control"  placeholder ="Nombre de la carrera" autocomplete="false" value ="#{carreraUI.carrera.nombreCarrera}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')"/>
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Plan de estudios"/>
-                    <p:inputText class ="form-control"  placeholder="Plan de estudios " value="#{carreraUI.carrera.plan}" />
+                    <p:inputText class ="form-control"  placeholder="Plan de estudios " value="#{carreraUI.carrera.plan}" onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9\s-]/g,'')"/>
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Banco de horas"/>
-                    <p:inputText class ="form-control"  placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" />
-                </div><div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{carreraUI.modificarCarrera}" />
-                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conCarrera.xhtml" />                    
+                    <p:inputText class ="form-control"  placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" onkeyup=" this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>
                 <div style="text-align: center;">
                     <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{carreraUI.modificarCarrera}" />

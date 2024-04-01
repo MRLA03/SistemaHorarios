@@ -22,19 +22,19 @@
             <div class="registro">
                 <div class="panel-body">
                     <p:outputLabel value="Clave"/>
-                    <p:inputText class ="form-control" placeholder ="Clave" autocomplete="false" value ="#{carreraUI.carrera.claveCarrera}" />
+                    <p:inputText class ="form-control" placeholder ="Clave" autocomplete="false" value ="#{carreraUI.carrera.claveCarrera}" onkeyup=" this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control" placeholder ="Nombre de la carrera" autocomplete="false" value ="#{carreraUI.carrera.nombreCarrera}" />
+                    <p:inputText class ="form-control" placeholder ="Nombre de la carrera" autocomplete="false" value ="#{carreraUI.carrera.nombreCarrera}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')" />
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Plan de estudios"/>
-                    <p:inputText class ="form-control" placeholder="Plan de estudios " value="#{carreraUI.carrera.plan}" />
+                    <p:inputText class ="form-control" placeholder="Plan de estudios " value="#{carreraUI.carrera.plan}" onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9\s-]/g,'')"/>
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Banco de horas"/>
-                    <p:inputText class ="form-control" placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" />
+                    <p:spinner class ="spinner_control" placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" min = "1" onkeyup=" this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>
                 <div style="text-align: center;">
                     <p:commandButton update="messages" class = "btn btn-success" value ="Aceptar" actionListener ="#{carreraUI.registrarCarrera}" />
@@ -46,5 +46,22 @@
         </h:form> 
     </h:body>
     <style>
+        .spinner_control {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
     </style>
 </html>

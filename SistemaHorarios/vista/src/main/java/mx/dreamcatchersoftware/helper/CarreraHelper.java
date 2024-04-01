@@ -33,6 +33,10 @@ public class CarreraHelper implements Serializable{
         return ServiceFacadeLocator.getInstanceFacadeCarrera().consultarCarrera();
     }
     
+    public Carrera consultarCarreraId(String busqueda){
+        return ServiceFacadeLocator.getInstanceFacadeCarrera().consultarCarreraId(busqueda);
+    }
+    
     public List consultarCarreraNombreClave(String busqueda){
         return ServiceFacadeLocator.getInstanceFacadeCarrera().consultarCarreraNombreClave(busqueda);
     }                   
