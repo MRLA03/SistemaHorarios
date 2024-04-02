@@ -10,15 +10,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:pm="http://primefaces.org/mobile">
-    <h:head>
-        
+    <h:head>        
         <link rel="preconnect" href="https://rsms.me/"/>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>  
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <title>INICIO</title>        
     </h:head>
     <h:body>
-        <h:form>               
+        <h:form id="formulario">               
             <div class="registro">
                 <div class="panel-body">
                     <p:outputLabel value="Clave"/>
@@ -37,14 +36,19 @@
                     <p:inputText class ="form-control" placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" />
                 </div>
                 <div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Aceptar" actionListener ="#{carreraUI.registrarCarrera}" />
-                <p:commandButton update="messages" class = "btn btn-success" value ="Importar" />
+                <p:commandButton update="messages" class = "btn btn-success" value ="Aceptar" actionListener ="#{carreraUI.registrarCarrera}" />
+                <!--<p:commandButton update="messages" class = "btn btn-success" value ="Importar" />-->
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
                 </p:messages> 
             </div>          
         </h:form> 
     </h:body>
+    <script>
+        setTimeout(function(){
+            $('#formulario\\:messages').fadeOut('fast');
+        }, 5000);
+    </script>
     <style>
     </style>
 </html>

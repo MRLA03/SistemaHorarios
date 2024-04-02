@@ -42,7 +42,9 @@
                     <p:inputText class ="form-control"  placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" />
                 </div>
                 <div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{carreraUI.modificarCarrera}" />
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{carreraUI.modificarCarrera}" action="modCarrera.xhtml">
+                        <f:param name="paramName" value="#{carreraUI.paramName}"/>
+                    </p:commandButton>
                     <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conCarrera.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
