@@ -14,8 +14,9 @@ import mx.dreamcatchersoftware.integracion.ServiceFacadeLocator;
  */
 public class test {
     public static void main(String[] args) {        
-//REGISTRAR CARRERA       
-        int val = ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera("6", "Licenciado en Sistemas Computacionales", "2009-2", 130);
-        System.out.println("VAL: "+val);
+    //CARRERA      
+        /*int val = ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera("6", "Licenciado en Sistemas Computacionales", "2009-2", 130);
+        System.out.println("VAL: "+val);*/
+    //ASIGNATURA
     }
 }
