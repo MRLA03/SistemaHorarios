@@ -8,11 +8,13 @@ package mx.dreamcatchersoftware.integracion;
 import mx.dreamcatchersoftware.DAO.AsignaturaDAO;
 import mx.dreamcatchersoftware.DAO.CarreraDAO;
 import mx.dreamcatchersoftware.DAO.EdificioDAO;
+import mx.dreamcatchersoftware.DAO.SalaDAO;
 
 public class ServiceLocator {
     private static CarreraDAO CarreraDAO;
     private static AsignaturaDAO AsignaturaDAO;
     private static EdificioDAO EdificioDAO;
+    private static SalaDAO SalaDAO; 
 
     public static CarreraDAO getInstanceCarreraDAO(){
         if(CarreraDAO == null){
@@ -39,5 +41,14 @@ public class ServiceLocator {
         } else {
             return EdificioDAO;
         }
-    }    
+    }
+
+    public static SalaDAO getInstanceSalaDAO(){
+        if(SalaDAO == null){
+            SalaDAO = new SalaDAO();
+            return SalaDAO;
+        } else{
+            return SalaDAO;
+        }
+    }     
 }

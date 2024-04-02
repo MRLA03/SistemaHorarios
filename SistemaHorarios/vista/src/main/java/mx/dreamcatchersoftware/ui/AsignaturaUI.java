@@ -75,7 +75,7 @@ public class AsignaturaUI {
         }
     }
 
-        public void modificarAsignatura() throws IOException{
+    public void modificarAsignatura() throws IOException{
         if(asignatura.getNombreAsignatura().isEmpty() || asignatura.getHoraClase()==null || asignatura.getHoraTaller()==null || asignatura.getHoraPractica()==null || asignatura.getHoraLaboratorio()==null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));            
         }else if(asignatura.getNombreAsignatura().matches("^[a-zA-Z\\s]+$")==false){
