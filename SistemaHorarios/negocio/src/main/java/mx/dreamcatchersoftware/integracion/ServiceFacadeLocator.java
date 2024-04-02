@@ -7,6 +7,7 @@ package mx.dreamcatchersoftware.integracion;
 
 import mx.dreamcatchersoftware.facade.FacadeAsignatura;
 import mx.dreamcatchersoftware.facade.FacadeCarrera;
+import mx.dreamcatchersoftware.facade.FacadeEdificio;
 
 
 
@@ -18,6 +19,7 @@ public class ServiceFacadeLocator {
    
     private static FacadeCarrera facadeCarrera;
     private static FacadeAsignatura facadeAsignatura;
+    private static FacadeEdificio facadeEdificio;
     
     public static FacadeCarrera getInstanceFacadeCarrera() {
         if (facadeCarrera == null) {
@@ -35,5 +37,15 @@ public class ServiceFacadeLocator {
         } else {
             return facadeAsignatura;
         }
-    }     
+    }
+    
+    public static FacadeEdificio getInstanceFacadeEdificio() {
+        if (facadeEdificio == null) {
+            facadeEdificio = new FacadeEdificio();
+            return facadeEdificio;
+
+        } else {
+            return facadeEdificio;
+        }
+    }    
 }

@@ -43,6 +43,5 @@ public class CarreraHelper implements Serializable{
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Has caido en una excepcion",""));               
         }
         return ServiceFacadeLocator.getInstanceFacadeCarrera().modificarCarrera(clave_carrera, nombre_carrera, plan, bancoh);
-    }
-    
+    }    
 }
