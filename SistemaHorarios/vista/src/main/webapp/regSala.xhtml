@@ -16,7 +16,8 @@
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <title>INICIO</title>        
     </h:head>
-    <h:body>
+    <h:body>        
+        <f:event type="preRenderView" listener="#{salaUI.limpiar()}"/>
         <h:form>               
             <div class="registro">                
                 <div class="panel-body">                        
@@ -48,6 +49,13 @@
         </h:form> 
     </h:body>
     <style>
+        .ui-spinner-input{
+            display: block;
+            width: 100%;
+        }
+        .ui-spinner-control{
+            margin:0;
+        }
         .spinner_control {
             display: block;
             width: 100%;

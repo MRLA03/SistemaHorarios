@@ -60,9 +60,9 @@ public class MaestroUI {
                 maestro.setHrsad(0);
             }
             int val = maestroHelper.registrarMaestro(maestro.getNEmpleado(), maestro.getNombreMaestro(), maestro.getTipo(), maestro.getHrsIE(), maestro.getHrsad(), maestro.getHmax());
-            if(val==1){
+            /*if(val==1){
                 Limpiar();
-            }
+            }*/
 
         }
         resultados=consultarMaestro();
@@ -80,10 +80,10 @@ public class MaestroUI {
                 maestro.setHrsad(0);
             }
             int val = maestroHelper.modificarMaestro(maestro.getNEmpleado(), maestro.getNombreMaestro(), maestro.getTipo(), maestro.getHrsIE(), maestro.getHrsad(), maestro.getHmax());
-            if(val==1){
+            /*if(val==1){
                 modificacionExitosa =true;
                 Limpiar();
-            }
+            }*/
 
         }
         resultados=consultarMaestro();
@@ -146,11 +146,7 @@ public class MaestroUI {
 
     public void setParamName(String paramName) {
         this.paramName = paramName;
-    }
-    
-    public void Limpiar(){
-        this.maestro = new Maestro();
-    }
+    }      
     
     public String tipoEmpleadoString(){
         String mostrar ="";
@@ -192,5 +188,7 @@ public class MaestroUI {
         this.modificacionExitosa = modificacionExitosa;
     }
     
-    
+    public void limpiar(){
+        this.maestro = new Maestro();
+    }
 }

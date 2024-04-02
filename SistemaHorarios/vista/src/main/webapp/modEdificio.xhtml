@@ -27,16 +27,18 @@
             <div class="registro">
                 <div class="panel-body">
                     <p:outputLabel value="Clave"/>
-                    <p:inputText class="form-control" readonly="true" placeholder="Clave" autocomplete="false" value="#{edificioUI.paramNameC}"/>
+                    <p:inputText class="form-control" readonly="true" placeholder="Clave" autocomplete="false" value="#{edificioUI.edificio.claveEdificio}"/>
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control"  placeholder ="Nombre del Edificio" autocomplete="false" value ="#{edificioUI.edificio.nombreEdificio}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')"/>
+                    <p:inputText class ="form-control"  placeholder ="Nombre del Edificio" autocomplete="false" value ="#{edificioUI.edificio.nombreEdificio}" onkeyup="this.value=this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s]/g,'')"/>
                 </div>
                 
                 
                 <div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{edificioUI.modificarEdificio}"  />
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{edificioUI.modificarEdificio()}">
+                        <f:param name="paramNameC" value="#{edificioUI.paramNameC}"/>
+                    </p:commandButton>
                     <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conEdificio.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     

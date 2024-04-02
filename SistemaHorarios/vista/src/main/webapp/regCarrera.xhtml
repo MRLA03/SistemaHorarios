@@ -18,6 +18,7 @@
         <title>INICIO</title>        
     </h:head>
     <h:body>
+        <f:event type="preRenderView" listener="#{carreraUI.limpiar()}"/>
         <h:form>               
             <div class="registro">
                 <div class="panel-body">
@@ -26,7 +27,7 @@
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control" placeholder ="Nombre de la carrera" autocomplete="false" value ="#{carreraUI.carrera.nombreCarrera}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')" />
+                    <p:inputText class ="form-control" placeholder ="Nombre de la carrera" autocomplete="false" value ="#{carreraUI.carrera.nombreCarrera}" onkeyup="this.value=this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s]/g,'')"/>
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Plan de estudios"/>
@@ -46,6 +47,13 @@
         </h:form> 
     </h:body>
     <style>
+        .ui-spinner-input{
+            display: block;
+            width: 100%;
+        }
+        .ui-spinner-control{
+            margin:0;
+        }
         .spinner_control {
             display: block;
             width: 100%;

@@ -18,7 +18,7 @@
     </h:head>
     <h:body>
         <f:event type="preRenderView" listener="#{carreraUI.init()}"/>
-        
+        <f:event type="preRenderView" listener="#{carreraUI.consultaId()}"/>
         <!--COSAS PARA PROBAR EL PASE DE VALORES-->
         <!--<h:outputText value="Valor del parámetro recibido: {param.paramName}" />
         <h:outputText value="Valor del parámetro recibido: {carreraUI.paramName}" />-->
@@ -31,7 +31,7 @@
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control"  placeholder ="Nombre de la carrera" autocomplete="false" value ="#{carreraUI.carrera.nombreCarrera}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')"/>
+                    <p:inputText class ="form-control"  placeholder ="Nombre de la carrera" autocomplete="false" value ="#{carreraUI.carrera.nombreCarrera}" onkeyup="this.value=this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s]/g,'')"/>
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Plan de estudios"/>
@@ -39,10 +39,12 @@
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Banco de horas"/>
-                    <p:inputText class ="form-control"  placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" onkeyup=" this.value=this.value.replace(/[^\d]/,'')"/>
+                    <p:spinner class ="spinner_control" placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" min = "1" onkeyup=" this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>
                 <div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{carreraUI.modificarCarrera}" />
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{carreraUI.modificarCarrera}">
+                        <f:param name="paramName" value="#{carreraUI.paramName}"/>
+                    </p:commandButton>
                     <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conCarrera.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     

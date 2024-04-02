@@ -17,9 +17,11 @@ public class EdificioHelper implements Serializable {
     public int registrarEdificio(String claveEdificio, String nombreEdificio) {
         try {
             if (ServiceFacadeLocator.getInstanceFacadeEdificio().registrarEdificio(claveEdificio, nombreEdificio) != 0) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro Exitoso", ""));
                 return ServiceFacadeLocator.getInstanceFacadeEdificio().registrarEdificio(claveEdificio, nombreEdificio);
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Clave ya existente", ""));
+                return 0;
             }
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos", ""));
@@ -47,8 +49,7 @@ public class EdificioHelper implements Serializable {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificación Exitosa", ""));
             }else if(val == 0){
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Modificar",""));                   
-            }
-            
+            }            
           
         }catch(Exception e){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos",""));   

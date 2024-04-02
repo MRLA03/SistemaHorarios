@@ -17,6 +17,7 @@
         <title>INICIO</title>        
     </h:head>
     <h:body>
+        <f:event type="preRenderView" listener="#{edificioUI.limpiar()}"/>
         <h:form>               
             <div class="registro">
                 <div class="panel-body">
@@ -25,7 +26,7 @@
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control" placeholder ="Nombre del Edificio" autocomplete="false" value ="#{edificioUI.edificio.nombreEdificio}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')"/>
+                    <p:inputText class ="form-control" placeholder ="Nombre del Edificio" autocomplete="false" value ="#{edificioUI.edificio.nombreEdificio}" onkeyup="this.value=this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s]/g,'')"/>
                 </div>
             
                 <div style="text-align: center;">

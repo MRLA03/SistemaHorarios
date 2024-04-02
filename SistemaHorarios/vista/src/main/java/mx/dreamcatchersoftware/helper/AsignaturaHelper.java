@@ -17,6 +17,7 @@ public class AsignaturaHelper implements Serializable {
     public int registrarAsignatura(String clave_asignatura, String nombre_asignatura, int horas_clase, int horas_taller, int horas_practica, int horas_laboratorio) {
         try {
             if (ServiceFacadeLocator.getInstanceFacadeAsignatura().registrarAsignatura(clave_asignatura, nombre_asignatura, horas_clase, horas_taller, horas_practica, horas_laboratorio) != 0) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro Exitoso", ""));
                 return ServiceFacadeLocator.getInstanceFacadeAsignatura().registrarAsignatura(clave_asignatura, nombre_asignatura, horas_clase, horas_taller, horas_practica, horas_laboratorio);
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Clave ya existente", ""));
@@ -41,13 +42,15 @@ public class AsignaturaHelper implements Serializable {
 
     public int modificarAsignatura(String clave_asignatura, String nombre_asignatura, int Horas_clase, int Horas_taller, int Horas_practica, int Horas_laboratorio) {
         try{
-            if(ServiceFacadeLocator.getInstanceFacadeAsignatura().registrarAsignatura(clave_asignatura, nombre_asignatura, Horas_clase, Horas_taller, Horas_practica, Horas_laboratorio)!=0){
+            if(ServiceFacadeLocator.getInstanceFacadeAsignatura().modificarAsignatura(clave_asignatura, nombre_asignatura, Horas_clase, Horas_taller, Horas_practica, Horas_laboratorio)!=0){
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificación Exitosa", ""));
                 return ServiceFacadeLocator.getInstanceFacadeAsignatura().modificarAsignatura(clave_asignatura, nombre_asignatura, Horas_clase, Horas_taller, Horas_practica, Horas_laboratorio);                
             }else{
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos",""));                                   
+                return 0;
             }
         }catch(Exception e){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos",""));               
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos Excepcion Helper",""));               
         }
         return ServiceFacadeLocator.getInstanceFacadeAsignatura().modificarAsignatura(clave_asignatura, nombre_asignatura, Horas_clase, Horas_taller, Horas_practica, Horas_laboratorio);
     }

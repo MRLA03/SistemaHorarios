@@ -35,7 +35,7 @@
                 </div>                  
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control" placeholder ="Nombre de la Asignatura" autocomplete="false" value ="#{asignaturaUI.asignatura.nombreAsignatura}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')"/>
+                    <p:inputText class ="form-control" placeholder ="Nombre de la Asignatura" autocomplete="false" value ="#{asignaturaUI.asignatura.nombreAsignatura}" onkeyup="this.value=this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s]/g,'')"/>
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Horas Clase"/>
@@ -53,8 +53,10 @@
                     <p:spinner class ="form-control" placeholder ="Horas laboratorio" autocomplete="false" value ="#{asignaturaUI.asignatura.horaLaboratorio}" min = "0" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>
                 <div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{asignaturaUI.modificarAsignatura()}"/>
-                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" actionListener ="#{asignaturaUI.Limpiar()}" action="conAsignatura.xhtml" />                    
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{asignaturaUI.modificarAsignatura()}">
+                        <f:param name="paramName" value="#{asignaturaUI.paramName}"/>
+                    </p:commandButton>
+                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" actionListener ="#{asignaturaUI.limpiar()}" action="conAsignatura.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
                 </p:messages> 
@@ -62,6 +64,13 @@
         </h:form> 
     </h:body>
     <style>
+        .ui-spinner-input{
+            display: block;
+            width: 100%;
+        }
+        .ui-spinner-control{
+            margin:0;
+        }
         .spinner_control {
             display: block;
             width: 100%;

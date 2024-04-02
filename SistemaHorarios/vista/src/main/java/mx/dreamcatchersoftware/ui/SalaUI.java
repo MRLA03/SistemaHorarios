@@ -50,9 +50,9 @@ public class SalaUI {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));
         }else{
             int val = salaHelper.registrarSala(sala.getNombreSala(), sala.getCapacidad(), sala.getIdEdificio(), sala.getNota());
-            if(val==1){
+            /*if(val==1){
                 Limpiar();
-            }
+            }*/
 
         }
         resultados=consultarSala();
@@ -64,9 +64,9 @@ public class SalaUI {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar",""));
         }else{
             int val = salaHelper.modificarSala(sala.getIdSala(),sala.getNombreSala(), sala.getCapacidad(), sala.getIdEdificio(), sala.getNota());
-            if(val==1){
+            /*if(val==1){
                 Limpiar();
-            }
+            }*/
         }
         resultados=consultarSala();
     }
@@ -138,7 +138,7 @@ public class SalaUI {
         this.filtrarEdificio = filtrarEdificio;
     }
     
-    public void Limpiar(){
+    public void limpiar(){
         this.sala = new Sala();
     }
     

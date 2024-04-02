@@ -119,7 +119,7 @@ public class AsignaturaUI {
         this.paramName = paramName;
     }    
     
-    public void Limpiar(){
+    public void limpiar(){
         this.asignatura  = new Asignatura();
     }
 }

@@ -58,7 +58,13 @@
                         <h:outputText value="Edificio"/>
                     </f:facet>
                     <h:outputText value="#{sal.getIdEdificio().getNombreEdificio()}"/>                    
-                </p:column>      
+                </p:column>  
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nota"/>
+                    </f:facet>
+                    <h:outputText value="#{sal.getNota()}"/>                    
+                </p:column>  
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="Acciones"/>

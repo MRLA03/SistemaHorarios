@@ -89,7 +89,7 @@ public class DelegateAsignatura {
                 val = 1; //Todo correcto
             } else {
                 System.out.println("No se encontró ninguna asignatura con la clave especificada.");
-                val  = 2;// En caso de que ya Exista la Asignatura
+                val  = 2;// En caso de que No Exista la Asignatura
             }
         } catch (Exception e) {// ocupe ayuda 
             System.out.println("\n Error al modificar Asignatura: " + e);

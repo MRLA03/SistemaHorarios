@@ -34,7 +34,7 @@ public class EdificioUI {
         edificio = new Edificio();
         resultados = new ArrayList<>();
         resultados = consultarEdificio();
-         paramNameC = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("paramNameC");        
+        paramNameC = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("paramNameC"); 
   }
 
     public void registrarEdificio() throws IOException {
@@ -61,6 +61,8 @@ public class EdificioUI {
 
      public void consultaId(){
         edificio = edificioHelper.consultarEdificioId(paramNameC);
+        /*List<Edificio> ed = edificioHelper.consultarEdificioNombreClave(paramNameC);
+        edificio = ed.get(0);*/
     }
     
     public void busquedaDinamica() {
@@ -107,7 +109,7 @@ public class EdificioUI {
         this.paramNameC = paramNameC;
     }
     
-    public void Limpiar(){
+    public void limpiar(){
         this.edificio = new Edificio();
     }
     
@@ -127,9 +129,9 @@ public class EdificioUI {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Faltan campos por llenar", ""));
         } else {
             int val = edificioHelper.modificarEdificio(edificio.getClaveEdificio(), edificio.getNombreEdificio());
-            if (val == 1) {
+            /*if (val == 1) {
                 Limpiar();
-            }
+            }*/
         }
         resultados = consultarEdificio();
     }

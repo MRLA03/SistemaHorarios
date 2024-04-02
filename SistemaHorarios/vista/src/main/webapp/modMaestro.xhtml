@@ -33,7 +33,7 @@
                 </div>
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre*"/>
-                    <p:inputText class ="form-control" placeholder ="Nombre de la Sala" autocomplete="false" value ="#{maestroUI.maestro.nombreMaestro}" onkeyup="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')"/>
+                    <p:inputText class ="form-control" placeholder ="Nombre de la Sala" autocomplete="false" value ="#{maestroUI.maestro.nombreMaestro}" onkeyup="this.value=this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s]/g,'')"/>
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Tipo Maestro*"/>                    
@@ -57,8 +57,10 @@
                     <p:spinner class ="spinner_control" placeholder="Horas Maximas a impartir" value="#{maestroUI.maestro.hmax}" min="0" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>
                 <div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{maestroUI.modificarMaestro()}"/><!--action="conMaestro.xhtml"-->
-                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" actionListener ="#{maestroUI.Limpiar()}" action="conMaestro.xhtml" />                    
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{maestroUI.modificarMaestro()}">
+                        <f:param name="paramName" value="#{maestroUI.paramName}"/>
+                    </p:commandButton><!--action="conMaestro.xhtml"-->
+                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conMaestro.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
                 </p:messages>
@@ -66,6 +68,13 @@
         </h:form> 
     </h:body>
     <style>
+        .ui-spinner-input{
+            display: block;
+            width: 100%;
+        }
+        .ui-spinner-control{
+            margin:0;
+        }
         .spinner_control {
             display: block;
             width: 100%;

@@ -52,6 +52,11 @@ public class CarreraUI {
         return carreraHelper.consultarCarrera();
     }
     
+    public void consultaId(){
+        List<Carrera> c = carreraHelper.consultarCarreraNombreClave(paramName);
+        carrera = c.get(0);
+    }
+    
     public void busquedaDinamica(){
         if(palabraBuscada != null && !palabraBuscada.isEmpty()){
             try{
@@ -105,5 +110,9 @@ public class CarreraUI {
 
     public void setParamName(String paramName) {
         this.paramName = paramName;
+    }
+    
+    public void limpiar(){
+        this.carrera = new Carrera();
     }
 }

@@ -50,7 +50,20 @@ public class MaestroHelper {
     }
     
     public int modificarMaestro(String numero_empleado, String nombre_maestro, int tipo_maestro, int horas_IE, int horas_ad, int horas_max) {
-        return ServiceFacadeLocator.getInstanceFacadeMaestro().modificarMaestro(numero_empleado, nombre_maestro, tipo_maestro, horas_IE, horas_ad, horas_max);
+        //return ServiceFacadeLocator.getInstanceFacadeMaestro().modificarMaestro(numero_empleado, nombre_maestro, tipo_maestro, horas_IE, horas_ad, horas_max);
+        
+        int val=0;
+        try{            
+            val = ServiceFacadeLocator.getInstanceFacadeMaestro().modificarMaestro(numero_empleado, nombre_maestro, tipo_maestro, horas_IE, horas_ad, horas_max);
+            if(val == 1){
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificación Exitosa", ""));
+            }else if(val == 0){
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Modificar",""));                   
+            }
+        }catch(Exception e){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en la entrada de datos",""));   
+        }
+        return val;
     }
         
 }
