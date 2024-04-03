@@ -2,6 +2,7 @@ package mx.dreamcatchersoftware.facade;
 
 import java.util.List;
 import mx.dreamcatchersoftware.delegate.DelegateSala;
+import mx.dreamcatchersoftware.entidad.Edificio;
 import mx.dreamcatchersoftware.entidad.Sala;
 /**
  *
@@ -14,7 +15,7 @@ public class FacadeSala {
         this.delegateSala = new DelegateSala();
     }
 
-    public int registrarSala(String nombre_sala, int capacidad, int id_edificio, String nota) {
+    public int registrarSala(String nombre_sala, int capacidad, Edificio id_edificio, String nota) {
         return delegateSala.registrarSala(nombre_sala, capacidad, id_edificio, nota);
     }
     
@@ -30,7 +31,7 @@ public class FacadeSala {
         return delegateSala.filtrarSalaEdificio(salas, id_Edificio);
     }
     
-    public int modificarSala(int id_sala,String nombre_sala, int capacidad, int id_edificio, String nota) {
+    public int modificarSala(int id_sala, String nombre_sala, int capacidad, Edificio id_edificio, String nota) {
         return delegateSala.modificarSala(id_sala, nombre_sala, capacidad, id_edificio, nota);
     }
     

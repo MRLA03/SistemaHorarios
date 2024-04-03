@@ -21,19 +21,19 @@ public class DelegateSala {
         * VALIDACION DE PERMISOS: Validar que ciertos usuarios puedan acceder a ciertas partes dependiendo de sus permisos si es que existen
     */    
     
-    public int registrarSala(String nombre_sala, int capacidad, int id_edificio, String nota) {
+    public int registrarSala(String nombre_sala, int capacidad, Edificio id_edificio, String nota) {
         int val = 0;// 0 Si no cumple las validaciones
         List<Sala> salas = new ArrayList<>();
         Sala sal = new Sala();        
         List<Edificio> edificios = new ArrayList<>();
         try{
-            salas = ServiceLocator.getInstanceSalaDAO().executeQuery("SELECT * FROM sala WHERE nombreSala = '"+nombre_sala+"' AND idEdificio = "+id_edificio+";");
+            salas = ServiceLocator.getInstanceSalaDAO().executeQuery("SELECT * FROM sala WHERE nombreSala = '"+nombre_sala+"' AND idEdificio = "+id_edificio.getIdEdificio()+";");
             if(salas.isEmpty()){
-                edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio WHERE idEdificio = "+id_edificio+";");
+                edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio WHERE idEdificio = "+id_edificio.getIdEdificio()+";");
                 if(!edificios.isEmpty()){
                     sal.setNombreSala(nombre_sala);
                     sal.setCapacidad(capacidad);
-                    sal.setIdEdificio(edificios.get(0));
+                    sal.setIdEdificio(id_edificio);
                     sal.setNota(nota);
                     ServiceLocator.getInstanceSalaDAO().save(sal);
                     val=1;
@@ -111,24 +111,24 @@ public class DelegateSala {
                 .collect(Collectors.toList());
         }catch(Exception e){
             System.out.println("\n Error al filtrar Sala por Edificio: " + e);
-        }
-        
+        }        
         return salasFiltradas;
     }
     
-    public int modificarSala(int id_sala,String nombre_sala, int capacidad, int id_edificio, String nota) {
+    //FALTA VALIDAR LO DEL NOMBRE EN EL SALON AQUI
+    public int modificarSala(int id_sala,String nombre_sala, int capacidad, Edificio id_edificio, String nota) {
         int val = 0; // 0 si no cumple las validaciones     
-        List<Sala> salas = new ArrayList<>();
-        Sala sal = new Sala();        
-        List<Edificio> edificios = new ArrayList<>();
         try{
-            salas = ServiceLocator.getInstanceSalaDAO().executeQuery("SELECT * FROM sala WHERE idSala = "+id_sala+";");
+            List<Sala> salas = ServiceLocator.getInstanceSalaDAO().executeQuery("SELECT * FROM sala WHERE idSala = "+id_sala+";");
+            Sala sal = new Sala();
+            List<Edificio> edificios = new ArrayList<>();            
             if(!salas.isEmpty()){//Validar que exista la sala
-                edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio WHERE idEdificio = "+id_edificio+";");
+                edificios = ServiceLocator.getInstanceEdificioDAO().executeQuery("SELECT * FROM edificio WHERE idEdificio = "+id_edificio.getIdEdificio()+";");
                 if(!edificios.isEmpty()){
+                    sal = salas.get(0);
                     sal.setNombreSala(nombre_sala);
                     sal.setCapacidad(capacidad);
-                    sal.setIdEdificio(edificios.get(0));
+                    sal.setIdEdificio(id_edificio);
                     sal.setNota(nota);
                     ServiceLocator.getInstanceSalaDAO().update(sal);
                     val=1;// Todo bien

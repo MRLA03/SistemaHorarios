@@ -35,12 +35,6 @@
             <!--PAGINACION DE TABLA-->
             <!--<p:dataTable paginator="true" rows="10" rowsPerPageTemplate="5,10,15" id="searchResults" var="carre" value="" class="custom-table" emptyMessage="No se encontraron registros"> -->
             <p:dataTable id="searchResults" var="sal" value="#{salaUI.resultados}" class="custom-table" emptyMessage="No se encontraron registros">                
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Id"/>
-                    </f:facet>
-                    <h:outputText id="clave" value="#{sal.getIdSala()}"/>
-                </p:column>
                 <p:column>                    
                     <f:facet name="header">
                         <h:outputText value="Nombre"/>
@@ -58,15 +52,21 @@
                         <h:outputText value="Edificio"/>
                     </f:facet>
                     <h:outputText value="#{sal.getIdEdificio().getNombreEdificio()}"/>                    
-                </p:column>      
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nota"/>
+                    </f:facet>
+                    <h:outputText value="#{sal.getNota()}"/>                    
+                </p:column>                 
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="Acciones"/>
                     </f:facet>
-                    <p:commandButton value="M" action="modSala.xhtmsall">
+                    <p:button value="M" outcome='modSala.xhtml'>
                         <f:param name="paramName" value="#{sal.getIdSala()}"/>
-                    </p:commandButton>
-                    <p:commandButton value="E"/>                                      
+                    </p:button>
+                    <!--<p:commandButton value="E"/>-->                                      
                 </p:column>  
             </p:dataTable>
         </h:form>

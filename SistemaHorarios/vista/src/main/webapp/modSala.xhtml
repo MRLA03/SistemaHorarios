@@ -17,41 +17,74 @@
         <title>INICIO</title>        
     </h:head>
     <h:body>
-        <f:event type="preRenderView" listener="#{carreraUI.init()}"/>
+        <f:event type="preRenderView" listener="#{salaUI.init()}"/>
+        <f:event type="preRenderView" listener="#{salaUI.consultaId()}"/>
         
         <!--COSAS PARA PROBAR EL PASE DE VALORES-->
-        <!--<h:outputText value="Valor del parámetro recibido: #{param.paramName}" />
-        <h:outputText value="Valor del parámetro recibido: #{carreraUI.paramName}" />-->
+        <!--<h:outputText value="Valor del parámetro recibido: {param.paramName}" />
+        <h:outputText value="Valor del parámetro recibido: {carreraUI.paramName}" />-->
 
         <h:form>               
-            <div class="registro">
-                <div class="panel-body">
-                    <p:outputLabel value="Clave"/>
-                    <p:inputText class="form-control" readonly="true" placeholder="Clave" autocomplete="false" value="#{carreraUI.paramName}"/>
-                </div>                  
+            <div class="registro">                
+                <div class="panel-body">                        
+                    <p:outputLabel value="ID"/>
+                    <p:inputText class ="form-control" readonly="true" placeholder ="Id Sala" autocomplete="false" value ="#{salaUI.paramName}" />
+                </div>
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control"  placeholder ="Nombre de la carrera" autocomplete="false" value ="#{carreraUI.carrera.nombreCarrera}" />
+                    <p:inputText class ="form-control" placeholder ="Nombre de la Sala" autocomplete="false" value ="#{salaUI.sala.nombreSala}" />
                 </div>
                 <div class="panel-body">
-                    <p:outputLabel value="Plan de estudios"/>
-                    <p:inputText class ="form-control"  placeholder="Plan de estudios " value="#{carreraUI.carrera.plan}" />
+                    <p:outputLabel value="Capacidad"/>
+                    <p:spinner class ="spinner_control" placeholder="Capacidad" value="#{salaUI.sala.capacidad}" min="1" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
                 </div>
                 <div class="panel-body">
-                    <p:outputLabel value="Banco de horas"/>
-                    <p:inputText class ="form-control"  placeholder ="Banco de horas" autocomplete="false" value ="#{carreraUI.carrera.bancoHoras}" />
+                    <p:outputLabel value="Edificio"/>                    
+                    <h:selectOneMenu class ="form-control" value="#{salaUI.sala.idEdificio}" converter="omnifaces.SelectItemsConverter">
+                        <f:selectItem itemLabel="Elige una opción" itemValue="#{null}" />
+                        <f:selectItems value="#{edificioUI.consultarEdificio()}" var="edificio" itemValue="#{edificio}" itemLabel="#{edificio.getNombreEdificio()}"/>
+                    </h:selectOneMenu>
+                </div>
+                <div class="panel-body">
+                    <p:outputLabel value="Notas"/>
+                    <p:inputTextarea class="form-control" placeholder="Notas de la Sala, ej: tiene edificio, Computadoras..." rows="5" value="#{salaUI.sala.nota}" />
                 </div>
                 <div style="text-align: center;">
-                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{carreraUI.modificarCarrera}" action="modCarrera.xhtml">
-                        <f:param name="paramName" value="#{carreraUI.paramName}"/>
+                    <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{salaUI.modificarSala()}">
+                        <f:param name="paramName" value="#{salaUI.paramName}"/>
                     </p:commandButton>
-                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conCarrera.xhtml" />                    
+                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conSala.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
-                </p:messages> 
+                </p:messages>
             </div>          
         </h:form> 
     </h:body>
     <style>
+        .ui-spinner-input{
+           display: block;
+           width: 100%;
+           -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        }
+        .ui-spinner-button{
+            margin: 0;
+        }
+        .spinner_control {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
     </style>
 </html>
