@@ -37,7 +37,7 @@
                     <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{edificioUI.modificarEdificio}" action="modEdificio.xhtml">
                         <f:param name="paramName" value="#{edificioUI.paramName}"/>
                     </p:commandButton>
-                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conEdificio.xhtml" />                    
+                    <p:button class = "btn btn-danger" value ="Cancelar" outcome="conEdificio.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
                 </p:messages> 

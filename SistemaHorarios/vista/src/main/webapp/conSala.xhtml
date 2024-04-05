@@ -72,6 +72,35 @@
         </h:form>
     </h:body>
     <style>
-
+        /* Estilo para la última celda de la tabla */
+        .custom-table tr{
+            border-right: transparent !important;
+            border-left:  transparent !important; 
+            
+        } 
+      
+        /* Estilo para las líneas horizontales de la tabla */
+        .custom-table tr{
+            border-bottom: 1px solid gray; /* Líneas horizontales grises */
+            background-color: transparent !important;
+            border-right:  1px solid green;
+        }             
+       
+        /* Estilo para la primera celda de la tabla */
+        .custom-table tr:last-child {
+            
+            border-right:   transparent !important; 
+        }          
+               
+        
+        /* Estilo para el header de la tabla */
+        .custom-table th {
+            background-color: transparent !important; /* Header transparente */
+            color: black; /* Texto negro */
+            border-left: transparent !important;            
+            border-right:  transparent !important;            
+            border-top: transparent !important;            
+            border-bottom: 1px solid green; /* Borde verde */
+        }
     </style>
 </html>

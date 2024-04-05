@@ -53,7 +53,7 @@
                     <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{salaUI.modificarSala()}">
                         <f:param name="paramName" value="#{salaUI.paramName}"/>
                     </p:commandButton>
-                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conSala.xhtml" />                    
+                    <p:button class = "btn btn-danger" value ="Cancelar" outcome="conSala.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
                 </p:messages>

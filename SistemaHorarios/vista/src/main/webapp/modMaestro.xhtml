@@ -33,7 +33,7 @@
                 </div>
                 <div class="panel-body">                        
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText class ="form-control" placeholder ="Nombre de la Sala" autocomplete="false" value ="#{maestroUI.maestro.nombreMaestro}" onkeyup="this.value=this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s]/g,'')"/>
+                    <p:inputText class ="form-control" placeholder ="Nombre del maestro" autocomplete="false" value ="#{maestroUI.maestro.nombreMaestro}" onkeyup="this.value=this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s]/g,'')"/>
                 </div>
                 <div class="panel-body">
                     <p:outputLabel value="Tipo Maestro"/>                    
@@ -60,7 +60,7 @@
                     <p:commandButton update="messages" class = "btn btn-success" value ="Modificar" actionListener ="#{maestroUI.modificarMaestro()}" action="modMaestro.xhtml">
                         <f:param name="paramName" value="#{maestroUI.paramName}"/>
                     </p:commandButton><!--action="conMaestro.xhtml"-->
-                    <p:commandButton update="messages" class = "btn btn-danger" value ="Cancelar" action="conMaestro.xhtml" />                    
+                    <p:button class = "btn btn-danger" value ="Cancelar" outcome="conMaestro.xhtml" />                    
                 </div>
                 <p:messages id="messages" showDetail="true" closable="true">                     
                 </p:messages>
