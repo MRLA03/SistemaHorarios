@@ -17,7 +17,7 @@ public class CarreraHelper implements Serializable{
     
     public int registrarCarrera(String clave_carrera, String nombre_carrera, String plan, int bancoh){
         try{
-            if(ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera(clave_carrera, nombre_carrera, plan,bancoh) !=0){
+            if(ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera(clave_carrera, nombre_carrera, plan,bancoh) ==1){
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro Exitoso", ""));
                 return ServiceFacadeLocator.getInstanceFacadeCarrera().registrarCarrera(clave_carrera, nombre_carrera, plan,bancoh);                
             }else{
